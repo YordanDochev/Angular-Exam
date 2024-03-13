@@ -1,0 +1,67 @@
+svg {
+    width: 20px;
+    fill: white;
+    margin-left: -5px;
+    margin-right: 10px;
+}
+
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub-header {
+    background-color: #a4c639;
+    height: 46px;
+    line-height: 46px;
+}
+
+.sub-header ul li {
+    display: inline-block;
+}
+
+.sub-header ul.right-info li {
+    border-left: 1px solid rgba(250, 250, 250, 0.3);
+    padding: 0px 20px;
+}
+
+.sub-header ul.right-info li:last-child {
+    border-right: 1px solid rgba(250, 250, 250, 0.3);
+}
+
+.sub-header ul.right-info li i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.sub-header ul.right-info li a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sub-header ul.left-icons {
+    float: right;
+
+}
+
+.sub-header ul.left-icons li {
+    margin-right: -4px;
+    width: 46px;
+    display: inline-block;
+    text-align: center;
+    border-right: 1px solid rgba(250, 250, 250, 0.3);
+}
+
+.sub-header ul.left-icons li:first-child {
+    border-left: 1px solid rgba(250, 250, 250, 0.3);
+}
+
+.sub-header ul.left-icons li a {
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.sub-header ul.left-icons li a:hover {
+    opacity: 0.75;
+}
