@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { HomePageModule } from './home-page/home-page.module';
 import { SharedModule } from './shared/shared.module';
 import { CatalogPageModule } from './catalog-page/catalog-page.module';
+import { DetailsPageModule } from './details-page/details-page.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { CatalogPageModule } from './catalog-page/catalog-page.module';
     SharedModule,
     HomePageModule,
     CatalogPageModule,
+    DetailsPageModule,
     AppRoutingModule,
   ],
   providers: [],
