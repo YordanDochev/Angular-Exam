@@ -4,9 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { HomePageComponent } from './home-page/home-page.component';
 import { HomePageModule } from './home-page/home-page.module';
 import { SharedModule } from './shared/shared.module';
+import { CatalogPageModule } from './catalog-page/catalog-page.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     SharedModule,
     HomePageModule,
+    CatalogPageModule,
     AppRoutingModule,
   ],
   providers: [],
