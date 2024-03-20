@@ -1,10 +1,8 @@
 /* Google Font Link */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins" , sans-serif;
 }
 body{
   min-height: 100vh;
@@ -14,8 +12,6 @@ body{
   background: #eee;
   padding: 30px;
 }
-
-
 
 .container{
   position: relative;
@@ -199,6 +195,8 @@ body{
 .container #flip{
   display: none;
 }
+
+
 @media (max-width: 730px) {
   .container .cover{
     display: none;
