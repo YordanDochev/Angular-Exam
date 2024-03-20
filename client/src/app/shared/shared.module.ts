@@ -4,8 +4,8 @@ import { LoaderComponent } from './loader/loader.component';
 import { CardCarComponent } from './card-car/card-car.component';
 
 @NgModule({
-  declarations: [LoaderComponent, CardCarComponent],
+  declarations: [LoaderComponent, CardCarComponent, ],
   imports: [CommonModule],
-  exports: [LoaderComponent,CardCarComponent],
+  exports: [LoaderComponent,CardCarComponent,],
 })
 export class SharedModule {}
