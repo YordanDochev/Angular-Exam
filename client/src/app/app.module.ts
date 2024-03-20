@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { CatalogPageModule } from './catalog-page/catalog-page.module';
 import { DetailsPageModule } from './details-page/details-page.module';
 import { ContactUsPageModule } from './contact-us-page/contact-us-page.module';
+import { SingupPageModule } from './singup-page/singup-page.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { ContactUsPageModule } from './contact-us-page/contact-us-page.module';
     CatalogPageModule,
     DetailsPageModule,
     ContactUsPageModule,
+    SingupPageModule,
     AppRoutingModule,
   ],
   providers: [],
