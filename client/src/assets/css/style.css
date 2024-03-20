@@ -326,7 +326,6 @@ body {
   }
   
   
-  
   /* Banner Style */
   
   .img-fill{
@@ -527,27 +526,27 @@ body {
   /* Request Form */
   
   .request-form {
-	  background-color: #a4c639;
-	  padding: 40px 0px;
-	  color: #fff;
-  }
-  
-  .request-form h4 {
-	  font-size: 22px;
-	  font-weight: 600;
-  }
-  
-  .request-form span {
-	  font-size: 15px;
-	  font-weight: 400;
-	  display: inline-block;
-	  margin-top: 10px;
-  }
-  
-  .request-form a.border-button {
-	  margin-top: 12px;
-	  float: right;
-  }
+	background-color: #a4c639;
+	padding: 40px 0px;
+	color: #fff;
+}
+
+.request-form h4 {
+	font-size: 22px;
+	font-weight: 600;
+}
+
+.request-form span {
+	font-size: 15px;
+	font-weight: 400;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.request-form a.border-button {
+	margin-top: 12px;
+	float: right;
+}
   
   
   
@@ -676,60 +675,6 @@ body {
 	  font-weight: 600;
 	  color: #fff;
 	  letter-spacing: 0.5px;
-  }
-  
-  
-  
-  /* More Info */
-  
-  .more-info {
-	  margin-top: 140px;
-  }
-  
-  .more-info .left-image img {
-	  width: 100%;
-	  overflow: hidden;
-  }
-  
-  .more-info .more-info-content {
-	  background-color: #f7f7f7;
-  }
-  
-  .about-info .more-info-content {
-	  background-color: transparent;
-  }
-  
-  .about-info .right-content {
-	  padding: 0px!important;
-	  margin-right: 30px;
-  }
-  
-  .more-info .right-content {
-	  padding: 45px 45px 45px 30px;
-  }
-  
-  .more-info .right-content span {
-	  text-transform: uppercase;
-	  font-size: 15px;
-	  color: #666;
-	  letter-spacing: 1px;
-	  margin-bottom: 10px;
-	  display: block;
-  }
-  
-  .more-info .right-content h2 {
-	  font-size: 36px;
-	  font-weight: 600;
-	  margin-bottom: 35px;
-  }
-  
-  .more-info .right-content em {
-	  font-style: normal;
-	  color: #a4c639;
-  }
-  
-  .more-info .right-content p {
-	  margin-bottom: 30px;
   }
   
   
