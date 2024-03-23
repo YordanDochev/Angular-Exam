@@ -11,6 +11,7 @@ import { DetailsPageModule } from './details-page/details-page.module';
 import { ContactUsPageModule } from './contact-us-page/contact-us-page.module';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
+import { appRequestsInterceptorProvider } from './app-requests.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [appRequestsInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

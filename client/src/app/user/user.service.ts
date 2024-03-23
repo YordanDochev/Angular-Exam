@@ -17,17 +17,9 @@ export class UserService {
     password: string,
     rePassword: string
   ) {
-    const { apiUrl } = environment;
-    console.log({
-      username,
-      email,
-      phoneNumber,
-      password,
-      rePassword,
-    });
-        
+      
     return this.http
-      .post<UserForAuth>(`${apiUrl}/register`, {
+      .post<UserForAuth>('/api/register', {
         username,
         email,
         phoneNumber,
