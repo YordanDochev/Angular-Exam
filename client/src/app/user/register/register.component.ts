@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { from } from 'rxjs';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +10,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class RegisterComponent {
   form = this.fb.group({
-    firstName: [''],
+    username: [''],
     email: [''],
     phoneNumber: [''],
     passGroup: this.fb.group({
@@ -17,5 +19,28 @@ export class RegisterComponent {
     }),
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private userService: UserService) {}
+
+  registerFormSubmitHandler(): void {
+    
+    if (this.form.invalid) {
+      return;
+    }
+
+    const {
+      username,
+      email,
+      phoneNumber,
+      passGroup: { password, rePassword } = {},
+    } = this.form.value;
+   
+    
+    this.userService.register(
+      username!,
+      email!,
+      phoneNumber!,
+      password!,
+      rePassword!
+    );
+  }
 }

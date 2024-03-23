@@ -21,11 +21,11 @@
 
                 <div class="signup-form">
                     <div class="title">Signup</div>
-                    <form [formGroup]="form" >
+                    <form [formGroup]="form" (ngSubmit)="registerFormSubmitHandler()">
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" placeholder="Enter your name" id="firstName" name="firstName" formControlName="firstName" required>
+                                <input type="text" placeholder="Enter your username" id="username" name="username" formControlName="username" required>
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
@@ -35,18 +35,21 @@
                                 <i class="fas fa-phone"></i>
                                 <input type="text" placeholder="Enter your phone number" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" required>
                             </div>
-                            <div class="input-box">
-                                <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Enter your password" id="password" name="password" formControlName="password" required>
-                            </div>
-                            <div class="input-box">
-                                <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Repeat your password" id="rePassword" name="rePassword" formControlName="rePassword" required>
-                            </div>
+                            <ng-container formGroupName="passGroup">
+
+                                <div class="input-box">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" placeholder="Enter your password" id="password" name="password" formControlName="password" required>
+                                </div>
+                                <div class="input-box">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" placeholder="Repeat your password" id="rePassword" name="rePassword" formControlName="rePassword" required>
+                                </div>
+                            </ng-container>
                             <div class="button input-box">
                                 <input type="submit" value="Sumbit">
                             </div>
-                            <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label>
+                            <div class="text sign-up-text">Already have an account? <label>Login now</label>
                             </div>
                         </div>
                     </form>
