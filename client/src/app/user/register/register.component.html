@@ -1,4 +1,9 @@
+<div class="row hide">
+
+</div>
+
 <body>
+
     <div class="container">
         <div class="cover">
             <div class="front">
@@ -16,19 +21,27 @@
 
                 <div class="signup-form">
                     <div class="title">Signup</div>
-                    <form action="#">
+                    <form [formGroup]="form" >
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" placeholder="Enter your name" required>
+                                <input type="text" placeholder="Enter your name" id="firstName" name="firstName" formControlName="firstName" required>
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" placeholder="Enter your email" required>
+                                <input type="text" placeholder="Enter your email" id="email" name="email" formControlName="email" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-phone"></i>
+                                <input type="text" placeholder="Enter your phone number" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" required>
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Enter your password" required>
+                                <input type="password" placeholder="Enter your password" id="password" name="password" formControlName="password" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" placeholder="Repeat your password" id="rePassword" name="rePassword" formControlName="rePassword" required>
                             </div>
                             <div class="button input-box">
                                 <input type="submit" value="Sumbit">

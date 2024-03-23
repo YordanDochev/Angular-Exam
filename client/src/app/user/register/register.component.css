@@ -198,3 +198,9 @@ margin-top: 25px;
 .container #flip{
 display: none;
 }
+
+.hide{
+  background-color: #dddddd;
+  display: block;
+  height: 100px;
+}
