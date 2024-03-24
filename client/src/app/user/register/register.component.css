@@ -200,7 +200,6 @@ display: none;
 }
 
 .hide{
-  background-color: #dddddd;
-  display: block;
-  height: 100px;
+  background-color: #000000;
+  display: none;
 }

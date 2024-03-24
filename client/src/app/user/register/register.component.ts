@@ -24,9 +24,7 @@ export class RegisterComponent {
     private fb: FormBuilder,
     private userService: UserService,
     private router: Router
-  ) {
-    this.userService.user$.subscribe((data) => console.log(data));
-  }
+  ) {}
 
   registerFormSubmitHandler(): void {
     if (this.form.invalid) {

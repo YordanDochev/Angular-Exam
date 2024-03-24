@@ -98,12 +98,12 @@
   background: #a4c639;
 }
 
-.forms .form-content label {
+.forms .form-content span {
   color: #a4c639;
   cursor: pointer;
 }
 
-.forms .form-content label:hover {
+.forms .form-content span:hover {
   text-decoration: underline;
 }
 

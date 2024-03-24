@@ -252,13 +252,7 @@ body {
   .background-header .navbar-nav a.nav-link {
 	  color: #1e1e1e!important;
   }
-  .background-header .navbar-nav .nav-link:hover,
-  .background-header .navbar-nav .active>.nav-link,
-  .background-header .navbar-nav .nav-link.active,
-  .background-header .navbar-nav .nav-link.show,
-  .background-header .navbar-nav .show>.nav-link {
-	  color: #a4c639!important;
-  }
+ 
   .navbar .navbar-brand {
 	  float: 	left;
 	  margin-top: 12px;
@@ -296,11 +290,7 @@ body {
 	  transition: all 0.5s;
 	  margin-top: 5px;
   }
-  .navbar .navbar-nav .nav-link:hover
-  .navbar .navbar-nav .nav-link:active{
-	  color: #a4c639;
-	  border-bottom: 3px solid #a4c639;
-  }
+  
   .navbar .navbar-toggler-icon {
 	  background-image: none;
   }
