@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { from } from 'rxjs';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,17 +13,22 @@ export class RegisterComponent {
   form = this.fb.group({
     username: [''],
     email: [''],
-    phoneNumber: [''],
+    tel: [''],
     passGroup: this.fb.group({
       password: [''],
       rePassword: [''],
     }),
   });
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {
+    this.userService.user$.subscribe((data) => console.log(data));
+  }
 
   registerFormSubmitHandler(): void {
-    
     if (this.form.invalid) {
       return;
     }
@@ -30,17 +36,14 @@ export class RegisterComponent {
     const {
       username,
       email,
-      phoneNumber,
+      tel,
       passGroup: { password, rePassword } = {},
     } = this.form.value;
-   
-    
-    this.userService.register(
-      username!,
-      email!,
-      phoneNumber!,
-      password!,
-      rePassword!
-    );
+
+    this.userService
+      .register(username!, email!, tel!, password!, rePassword!)
+      .subscribe(() => {
+        this.router.navigate(['/home']);
+      });
   }
 }

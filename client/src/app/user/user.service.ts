@@ -1,31 +1,47 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment.development';
-import { tap } from 'rxjs';
-import { UserForAuth } from '../types/user';
+import { BehaviorSubject, tap } from 'rxjs';
+import { AuthUser } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  private user$$ = new BehaviorSubject<AuthUser | undefined>(undefined);
+  public user$ = this.user$$.asObservable();
+
+  user: AuthUser | undefined;
+
+  
+  
+  constructor(private http: HttpClient) {
+    this.user$.subscribe((data) => {
+      this.user = data;
+    });
+    console.log(this.user);
+  }
 
   register(
     username: string,
     email: string,
-    phoneNumber: string,
+    tel: string,
     password: string,
     rePassword: string
   ) {
-      
     return this.http
-      .post<UserForAuth>('/api/register', {
+      .post<AuthUser>('/api/register', {
         username,
         email,
-        phoneNumber,
+        tel,
         password,
         rePassword,
       })
-      .subscribe((data) => console.log(data));
+      .pipe(tap((data) => this.user$$.next(data)));
+  }
+
+  login(email: string, password: string) {
+    return this.http
+      .post<AuthUser>('/api/login', { email, password })
+      .pipe(tap((data) => this.user$$.next(data)));
   }
 }
