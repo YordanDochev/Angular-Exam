@@ -18,6 +18,7 @@ svg {
 
 .sub-header ul li {
     display: inline-block;
+    cursor: pointer;
 }
 
 .sub-header ul.right-info li {

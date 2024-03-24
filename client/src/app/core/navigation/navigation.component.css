@@ -1,38 +1,45 @@
 header .navbar {
 	padding: 20px 0px;
 }
+
 .background-header .navbar {
 	padding: 10px 0px;
 }
 
 .navbar .navbar-brand {
-	float: 	left;
+	float: left;
 	margin-top: 12px;
 	outline: none;
 }
+
 .navbar .navbar-brand h2 {
 	color: #fff;
 	text-transform: uppercase;
 	font-size: 24px;
 	font-weight: 700;
 	-webkit-transition: all .3s ease 0s;
-    -moz-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
-    transition: all .3s ease 0s;
+	-moz-transition: all .3s ease 0s;
+	-o-transition: all .3s ease 0s;
+	transition: all .3s ease 0s;
 }
+
 .navbar .navbar-brand h2 em {
 	font-style: normal;
 	font-size: 16px;
 }
+
 #navbarResponsive {
 	z-index: 999;
 }
+
 .navbar-collapse {
 	text-align: center;
 }
+
 .navbar .navbar-nav .nav-item {
 	margin: 0px 15px;
 }
+
 .navbar .navbar-nav a.nav-link {
 	text-transform: capitalize;
 	font-size: 15px;
@@ -42,14 +49,12 @@ header .navbar {
 	transition: all 0.5s;
 	margin-top: 5px;
 }
-.navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .nav-link:active,
-.navbar .navbar-nav .active>.nav-link,
-.navbar .navbar-nav .nav-link.active,
-.navbar .navbar-nav .nav-link.show,
-.navbar .navbar-nav .show>.nav-link
- {
+
+
+
+.navbar .navbar-nav .nav-link:hover {
 	color: #a4c639;
+
 	border-bottom: 3px solid #a4c639;
 }
 
@@ -57,9 +62,10 @@ header .navbar {
 .navbar .navbar-toggler-icon {
 	background-image: none;
 }
+
 .navbar .navbar-toggler {
 	border-color: #fff;
-	background-color: #fff;	
+	background-color: #fff;
 	height: 36px;
 	outline: none;
 	border-radius: 0px;
@@ -67,6 +73,7 @@ header .navbar {
 	right: 30px;
 	top: 20px;
 }
+
 .navbar .navbar-toggler-icon:after {
 	content: '\f0c9';
 	color: #a4c639;

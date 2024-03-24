@@ -10,22 +10,3 @@ export interface AuthUser {
 }
 
 
-export interface User {
-  themes: string[];
-  posts: string[];
-  _id: string;
-  tel: string;
-  email: string;
-  username: string;
-  created_at: string;
-  updatedAt: string;
-}
-
-
-export interface UserForAuth{
-  firstName:string,
-  email:string,
-  phoneNumber:string,
-  password:string,
-  id:string
-}

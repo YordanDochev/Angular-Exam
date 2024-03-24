@@ -12,9 +12,10 @@ import { ContactUsPageModule } from './contact-us-page/contact-us-page.module';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { appRequestsInterceptorProvider } from './app-requests.interceptor';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AuthenticationComponent],
   imports: [
     BrowserModule,
     CoreModule,
