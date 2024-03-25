@@ -5,12 +5,12 @@ import { HomePageComponent } from './home-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { RequestInfoComponent } from './request-info/request-info.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { CarsLatesEntriesComponent } from './cars-lates-entries/cars-lates-entries.component';
 import { RouterModule } from '@angular/router';
+import { CarModule } from '../features/car/car.module';
 
 @NgModule({
-  declarations: [BannerComponent, HomePageComponent, RequestInfoComponent, AboutUsComponent, CarsLatesEntriesComponent],
-  imports: [CommonModule,SharedModule,RouterModule],
+  declarations: [BannerComponent, HomePageComponent, RequestInfoComponent, AboutUsComponent],
+  imports: [CommonModule,SharedModule,RouterModule,CarModule],
   exports: [HomePageComponent],
 })
 export class HomePageModule {}

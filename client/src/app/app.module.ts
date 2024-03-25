@@ -6,13 +6,12 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { HomePageModule } from './home-page/home-page.module';
 import { SharedModule } from './shared/shared.module';
-import { CatalogPageModule } from './catalog-page/catalog-page.module';
-import { DetailsPageModule } from './details-page/details-page.module';
 import { ContactUsPageModule } from './contact-us-page/contact-us-page.module';
-import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { appRequestsInterceptorProvider } from './app-requests.interceptor';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { UserModule } from './features/user/user.module';
+import { CarModule } from './features/car/car.module';
 
 @NgModule({
   declarations: [AppComponent, AuthenticationComponent],
@@ -21,9 +20,8 @@ import { AuthenticationComponent } from './authentication/authentication.compone
     CoreModule,
     SharedModule,
     HomePageModule,
-    CatalogPageModule,
-    DetailsPageModule,
     ContactUsPageModule,
+    CarModule,
     UserModule,
     HttpClientModule,
     AppRoutingModule,
