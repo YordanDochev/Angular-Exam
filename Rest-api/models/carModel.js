@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types;
 
 const carSchema = new mongoose.Schema({
-    carName: {
+    postName: {
         type: String,
         required: true
     },
@@ -14,8 +14,24 @@ const carSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    price:{
+        type:String,
+        require:true
+    },
+    type:{
+        type:String,
+        require:true
+    },
+    gearbox:{
+        type:String,
+        require:true
+    },
     year: {
         type: Number,
+        required: true
+    },
+    images:{
+        type: [mongoose.Schema.Types.Mixed],
         required: true
     },
     mileage: {
@@ -33,6 +49,10 @@ const carSchema = new mongoose.Schema({
     color: {
         type: String,
         required: true
+    },
+    description:{
+        type:String,
+        require:true
     },
     subscribers: [{
         type: ObjectId,
