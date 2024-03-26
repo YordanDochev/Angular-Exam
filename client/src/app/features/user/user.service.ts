@@ -20,7 +20,7 @@ export class UserService implements OnDestroy {
 
   constructor(private http: HttpClient) {
     this.userSubscription = this.user$.subscribe((data) => {
-      this.user = data;
+      this.user = data;      
     });
   }
 
@@ -57,6 +57,7 @@ export class UserService implements OnDestroy {
   getProfile(){
     return this.http.get<AuthUser>('/api/users/profile').pipe(tap((data)=>this.user$$.next(data)))
   }
+
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();

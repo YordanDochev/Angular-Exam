@@ -31,7 +31,7 @@ const carSchema = new mongoose.Schema({
         required: true
     },
     images:{
-        type: [mongoose.Schema.Types.Mixed],
+        type: Object,
         required: true
     },
     mileage: {

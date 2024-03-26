@@ -6,9 +6,10 @@ import { DetailsPageComponent } from './details/details.component';
 import { CarRoutingModule } from './car-routing.module';
 import { AddEntryPageComponent } from './add-entry/add-entry.component';
 import { CatalogPageComponent } from './catalog/catalog.component';
-import { CarsEntriesComponent } from './catalog/cars-entries/cars-entries.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CarsLatesEntriesComponent } from './lates-entries/lates-entries.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,9 @@ import { CarsLatesEntriesComponent } from './lates-entries/lates-entries.compone
     DetailsPageComponent,
     AddEntryPageComponent,
     CatalogPageComponent,
-    CarsEntriesComponent,
     CarsLatesEntriesComponent,
   ],
-  imports: [CommonModule, CarRoutingModule, SharedModule],
+  imports: [CommonModule, CarRoutingModule, SharedModule,FormsModule,ReactiveFormsModule,HttpClientModule],
   exports: [CarsLatesEntriesComponent],
 })
 export class CarModule {}

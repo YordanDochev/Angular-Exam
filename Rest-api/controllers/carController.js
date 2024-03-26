@@ -1,5 +1,4 @@
-const { carModel } = require("../models");
-const { newPost } = require("./postController");
+const { carModel, userModel } = require("../models");
 
 function getCars(req, res, next) {
   carModel
@@ -57,11 +56,15 @@ function createCar(req, res, next) {
       power,
       color,
       description,
+      userId,
       subscribers: [userId],
     })
     .then((car) => {
-      // newPost(postText, userId, car._id)
-      //     .then(([_, updatedTheme]) => res.status(200).json(updatedTheme))
+      return Promise.all([
+        userModel.updateOne({ _id: userId }, { $addToSet: { cars: car._id } }),
+      ]);
+    }).then((car) => {
+      res.status(200).json(car);
     })
     .catch(next);
 }
