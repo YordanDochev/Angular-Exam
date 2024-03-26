@@ -18,6 +18,11 @@ export class CarService {
     });
   }
 
+  getAllCars(){
+    return this.http.get<Car[]>('/api/cars').pipe(tap(([data])=>this.car$$.next(data)))
+    
+  }
+
   createEntry(
     postName: string,
     carBrand: string,
