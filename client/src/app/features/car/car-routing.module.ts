@@ -5,7 +5,7 @@ import { AddEntryPageComponent } from './add-entry/add-entry.component';
 import { CatalogPageComponent } from './catalog/catalog.component';
 
 const routes: Routes = [
-  { path: 'details', component: DetailsPageComponent },
+  { path: 'details/:carId', component: DetailsPageComponent },
   { path: 'add-entry', component: AddEntryPageComponent },
   { path: 'catalog', component: CatalogPageComponent },
 ];

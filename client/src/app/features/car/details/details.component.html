@@ -2,14 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1><small><del><sup>$</sup>11999 </del></small> &nbsp; <sup>$</sup>11779</h1>
+                <h1><sup>$</sup>{{car.price}}</h1>
                 <span>
-                    Lorem ipsum dolor sit amet.
+                    {{car.postName}}
                 </span>
             </div>
         </div>
     </div>
 </div>
 
-<app-car-details/>
+<app-car-details [car]="car"/>
 
