@@ -8,9 +8,8 @@
                 </div>
             </div>
             <div class="card-item-holder">
-                <app-card-car />
-                <app-card-car />
-                <app-card-car />
+                <app-card-car *ngFor="let car of cars" [car]="car"/>
+                
             </div>
 
         </div>

@@ -18,9 +18,10 @@ export class CarService {
     });
   }
 
-  getAllCars(){
-    return this.http.get<Car[]>('/api/cars').pipe(tap(([data])=>this.car$$.next(data)))
-    
+  getAllCars() {
+    return this.http
+      .get<Car[]>('/api/cars')
+      .pipe(tap(([data]) => this.car$$.next(data)));
   }
 
   createEntry(
@@ -38,20 +39,28 @@ export class CarService {
     color: string,
     price: string
   ) {
-    return this.http.post<Car>('/api/cars', {
-      postName,
-      carBrand,
-      type,
-      images,
-      engineSize,
-      power,
-      year,
-      gearbox,
-      fuel,
-      mileage,
-      description,
-      color,
-      price,
-    }).pipe(tap((data)=> this.car$$.next(data)));
+    return this.http
+      .post<Car>('/api/cars', {
+        postName,
+        carBrand,
+        type,
+        images,
+        engineSize,
+        power,
+        year,
+        gearbox,
+        fuel,
+        mileage,
+        description,
+        color,
+        price,
+      })
+      .pipe(tap((data) => this.car$$.next(data)));
+  }
+
+  getLatesCars() {
+    return this.http
+      .get<Car[]>('/api/cars/lates')
+      .pipe(tap(([data]) => this.car$$.next(data)));
   }
 }

@@ -7,8 +7,9 @@ const { carController, postController } = require('../controllers');
 
 router.get('/', carController.getCars);
 router.post('/', auth(), carController.createCar);
-
+router.get('/lates', carController.getLatestsCars);
 router.get('/:carId', carController.getCar);
+
 router.post('/:carId', auth(), postController.createPost);
 router.put('/:carId', auth(), carController.subscribe);
 router.put('/:carId/posts/:postId', auth(), postController.editPost);

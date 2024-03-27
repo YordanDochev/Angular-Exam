@@ -13,12 +13,7 @@ function getCar(req, res, next) {
 
   carModel
     .findById(carId)
-    .populate({
-      path: "posts",
-      populate: {
-        path: "userId",
-      },
-    })
+    .populate("userId")
     .then((car) => res.json(car))
     .catch(next);
 }
@@ -69,6 +64,20 @@ function createCar(req, res, next) {
     .catch(next);
 }
 
+
+function getLatestsCars(req, res, next) {
+
+  carModel
+    .find()
+    .sort({ created_at: -1 })
+    .limit(3)
+    .populate("userId")
+    .then((cars) => {
+      res.status(200).json(cars);
+    })
+    .catch(next);
+}
+
 function subscribe(req, res, next) {
   const themeId = req.params.themeId;
   const { _id: userId } = req.user;
@@ -84,9 +93,12 @@ function subscribe(req, res, next) {
     .catch(next);
 }
 
+
+
 module.exports = {
   getCars,
   createCar,
   getCar,
   subscribe,
+  getLatestsCars
 };
