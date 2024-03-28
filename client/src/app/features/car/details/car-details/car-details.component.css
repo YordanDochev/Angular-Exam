@@ -89,3 +89,41 @@
 	background-color: #a4c639;
 }
 
+.img-car {
+	width: 100%;
+}
+
+.buttons {
+	padding-left: 15px;
+	margin-top: 25px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.button {
+	text-decoration: none;
+	padding: 10px;
+	color: black;
+	border: 2px solid #000;
+	border-radius: 10px;
+	font-weight: bold;
+	background-color: #a4c639;
+	letter-spacing: 1px;
+}
+
+.red {
+	background-color: red;
+}
+
+.button:hover {
+	background-color: #7fa20e;
+	color: #eee;
+	border-color: #d7d7d7;
+	box-shadow: 0 0 2px 2px rgb(0, 0, 0, 0.5);
+}
+
+.red:hover {
+	background-color: rgb(221, 3, 3);
+	color: #eee;
+
+}

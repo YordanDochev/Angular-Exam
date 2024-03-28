@@ -1,7 +1,7 @@
 import { Car } from './car';
 
 export interface AuthUser {
-  cars: Car;
+  cars: string[];
   posts: string[];
   _id: string;
   email: string;
@@ -11,15 +11,15 @@ export interface AuthUser {
   updatedAt: string;
 }
 
-export interface User {
-  cars: Car;
-  posts: string[];
-  _id: string;
-  tel: string;
-  email: string;
-  username: string;
-  password: string;
-  created_at: string;
-  updatedAt: string;
-  __v: number;
-}
+// export interface User {
+//   cars: Car[];
+//   posts: string[];
+//   _id: string;
+//   tel: string;
+//   email: string;
+//   username: string;
+//   password: string;
+//   created_at: string;
+//   updatedAt: string;
+//   __v: number;
+// }

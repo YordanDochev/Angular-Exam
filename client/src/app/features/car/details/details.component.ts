@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/types/car';
 import { CarService } from '../car.service';
+import { UserService } from '../../user/user.service';
+import { AuthUser } from 'src/app/types/user';
 
 @Component({
   selector: 'app-details',
@@ -10,10 +12,12 @@ import { CarService } from '../car.service';
 })
 export class DetailsPageComponent implements OnInit {
   car = {} as Car;
+  public isOwner: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private carService: CarService
+    private carService: CarService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -21,6 +25,9 @@ export class DetailsPageComponent implements OnInit {
       const id = data['carId'];
       this.carService.getCar(id).subscribe((data) => {
         this.car = data;
+      });
+      this.userService.getProfile().subscribe((data) => {
+        this.isOwner = !!data?.cars.find((x) => x === id);
       });
     });
   }

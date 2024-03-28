@@ -10,6 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CarsLatesEntriesComponent } from './lates-entries/lates-entries.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EditEntryPageComponent } from './edit-entry/edit-entry.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     CarDetailsComponent,
     DetailsPageComponent,
     AddEntryPageComponent,
+    EditEntryPageComponent,
     CatalogPageComponent,
     CarsLatesEntriesComponent,
   ],
