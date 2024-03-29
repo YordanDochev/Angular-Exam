@@ -31,13 +31,10 @@ export interface Car {
 }
 
 export interface CarEditValue {
-  postName: string | undefined;
+  postName: string | null;
   carBrand: string | undefined;
   type: string | undefined;
-  image1: string | undefined;
-  image2: string | undefined;
-  image3: string | undefined;
-  image4: string | undefined;
+  images: {};
   engineSize: number | undefined;
   power: number | undefined;
   gearbox: string | undefined;
