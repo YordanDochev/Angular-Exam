@@ -58,15 +58,14 @@ function createCar(req, res, next) {
       return Promise.all([
         userModel.updateOne({ _id: userId }, { $addToSet: { cars: car._id } }),
       ]);
-    }).then((car) => {
+    })
+    .then((car) => {
       res.status(200).json(car);
     })
     .catch(next);
 }
 
-
 function getLatestsCars(req, res, next) {
-
   carModel
     .find()
     .sort({ created_at: -1 })
@@ -74,6 +73,56 @@ function getLatestsCars(req, res, next) {
     .populate("userId")
     .then((cars) => {
       res.status(200).json(cars);
+    })
+    .catch(next);
+}
+
+function editCar(req, res, next) {
+  const { carId } = req.params;
+  const {
+    postName,
+    carBrand,
+    fuel,
+    price,
+    type,
+    gearbox,
+    year,
+    images,
+    mileage,
+    engineSize,
+    power,
+    color,
+    description,
+  } = req.body;
+  const { _id: userId } = req.user;
+
+  // if the userId is not the same as this one of the post, the post will not be updated
+  carModel
+    .findOneAndUpdate(
+      { _id: carId, userId },
+      {
+        postName,
+        carBrand,
+        fuel,
+        price,
+        type,
+        gearbox,
+        year,
+        images,
+        mileage,
+        engineSize,
+        power,
+        color,
+        description,
+      },
+      { new: true }
+    )
+    .then((updatedPost) => {
+      if (updatedPost) {
+        res.status(200).json(updatedPost);
+      } else {
+        res.status(401).json({ message: `Not allowed!` });
+      }
     })
     .catch(next);
 }
@@ -93,12 +142,11 @@ function subscribe(req, res, next) {
     .catch(next);
 }
 
-
-
 module.exports = {
   getCars,
   createCar,
   getCar,
   subscribe,
-  getLatestsCars
+  getLatestsCars,
+  editCar,
 };

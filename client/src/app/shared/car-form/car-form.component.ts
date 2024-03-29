@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CarFormComponent implements OnInit {
   isEditMode: boolean = false;
-
+  private id: string | undefined;
   form = this.fb.group({
     postName: [''],
     carBrand: [''],
@@ -41,10 +41,12 @@ export class CarFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe((data) => {
-      const id = data['carId'];
-      if (id !== undefined) {
+      this.id = data['carId'];
+      console.log( typeof this.id);
+
+      if (this.id !== undefined) {
         this.isEditMode = true;
-        this.carService.getCar(id).subscribe((car) => {
+        this.carService.getCar(this.id).subscribe((car) => {
           this.form.patchValue({
             postName: car.postName,
             carBrand: car.carBrand,
@@ -65,7 +67,6 @@ export class CarFormComponent implements OnInit {
             color: car.color,
             price: car.price,
           });
-          // this.car = data;
         });
       }
     });
@@ -86,31 +87,48 @@ export class CarFormComponent implements OnInit {
       color,
       price,
     } = this.form.value;
-    if(this.isEditMode === false){
-
-    this.carService
-      .createEntry(
-        postName!,
-        carBrand!,
-        type!,
-        images!,
-        engineSize!,
-        power!,
-        year!,
-        gearbox!,
-        fuel!,
-        mileage!,
-        description!,
-        color!,
-        price!
-      )
-      .subscribe(() => {
-        this.router.navigate(['/catalog']);
-        this.form.reset();
-      });
-    }else{
-      
+    if (this.isEditMode === false) {
+      this.carService
+        .createEntry(
+          postName!,
+          carBrand!,
+          type!,
+          images!,
+          engineSize!,
+          power!,
+          year!,
+          gearbox!,
+          fuel!,
+          mileage!,
+          description!,
+          color!,
+          price!
+        )
+        .subscribe(() => {
+          this.router.navigate(['/catalog']);
+        });
+    } else {
+      this.carService
+        .editEntry(
+          this.id!,
+          postName!,
+          carBrand!,
+          type!,
+          images!,
+          engineSize!,
+          power!,
+          year!,
+          gearbox!,
+          fuel!,
+          mileage!,
+          description!,
+          color!,
+          price!
+        )
+        .subscribe(() => {
+          this.router.navigate([`/details/${this.id}`]);
+        });
     }
-
+    this.form.reset();
   }
 }

@@ -24,8 +24,10 @@ export class CarService {
       .pipe(tap(([data]) => this.car$$.next(data)));
   }
 
-  getCar(id:string){
-    return this.http.get<Car>(`/api/cars/${id}`).pipe(tap((data)=>this.car$$.next(data)))
+  getCar(id: string) {
+    return this.http
+      .get<Car>(`/api/cars/${id}`)
+      .pipe(tap((data) => this.car$$.next(data)));
   }
 
   getLatesCars() {
@@ -68,5 +70,38 @@ export class CarService {
       .pipe(tap((data) => this.car$$.next(data)));
   }
 
-  
+  editEntry(
+    id: string,
+    postName: string,
+    carBrand: string,
+    type: string,
+    images: {},
+    engineSize: number,
+    power: number,
+    year: number,
+    gearbox: string,
+    fuel: string,
+    mileage: number,
+    description: string,
+    color: string,
+    price: string
+  ) {
+    return this.http
+      .put<Car>(`/api/cars/edit/${id}`, {
+        postName,
+        carBrand,
+        type,
+        images,
+        engineSize,
+        power,
+        year,
+        gearbox,
+        fuel,
+        mileage,
+        description,
+        color,
+        price,
+      })
+      .pipe(tap((data) => this.car$$.next(data)));
+  }
 }
