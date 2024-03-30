@@ -127,6 +127,24 @@ function editCar(req, res, next) {
     .catch(next);
 }
 
+function deleteCar(req, res, next) {
+  const { carId } = req.params;
+  const { _id: userId } = req.user;
+
+  Promise.all([
+    carModel.findOneAndDelete({ _id: carId, userId }),
+    userModel.findOneAndUpdate({ _id: userId }, { $pull: { cars: carId } }),
+  ])
+    .then(([deletedOne, _, __]) => {
+      if (deletedOne) {
+        res.status(200).json(deletedOne);
+      } else {
+        res.status(401).json({ message: `Not allowed!` });
+      }
+    })
+    .catch(next);
+}
+
 function subscribe(req, res, next) {
   const themeId = req.params.themeId;
   const { _id: userId } = req.user;
@@ -149,4 +167,5 @@ module.exports = {
   subscribe,
   getLatestsCars,
   editCar,
+  deleteCar,
 };

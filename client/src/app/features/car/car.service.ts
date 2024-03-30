@@ -104,4 +104,10 @@ export class CarService {
       })
       .pipe(tap((data) => this.car$$.next(data)));
   }
+
+  deleteEntry(id: string) {
+    return this.http
+      .delete<Car>(`/api/cars/delete/${id}`)
+      .pipe(tap((data) => this.car$$.next(data)));
+  }
 }

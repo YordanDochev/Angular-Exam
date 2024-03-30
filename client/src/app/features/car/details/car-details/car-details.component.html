@@ -113,7 +113,7 @@
                 <br>
                 <div class="buttons" *ngIf="isOwner">
                     <a class="button" [routerLink]="'/edit-entry/'+car._id">Edit</a>
-                    <a class="button red" href="">Delete</a>
+                    <button class="button red" (click)="onClickDeleteHanlder(car._id)">Delete</button>
                 </div>
             </div>
         </div>

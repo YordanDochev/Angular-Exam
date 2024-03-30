@@ -10,6 +10,7 @@ router.get("/lates", carController.getLatestsCars);
 router.get("/:carId", carController.getCar);
 router.post("/", auth(), carController.createCar);
 router.put("/edit/:carId", auth(), carController.editCar);
+router.delete("/delete/:carId", auth(), carController.deleteCar);
 
 // router.post("/:carId", auth(), postController.createPost);
 // router.put("/:carId", auth(), carController.subscribe);
