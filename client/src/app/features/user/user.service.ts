@@ -15,8 +15,10 @@ export class UserService implements OnDestroy {
   userSubscription: Subscription;
 
   get isLogged(): boolean {
+    
     return !!this.user;
   }
+
 
   constructor(private http: HttpClient) {
     this.userSubscription = this.user$.subscribe((data) => {

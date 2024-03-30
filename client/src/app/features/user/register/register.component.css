@@ -203,3 +203,11 @@ display: none;
   background-color: #000000;
   display: none;
 }
+
+.error-input {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8em;
+  color: rgba(247, 31, 31, 0.859);
+  font-style: italic;
+}
+

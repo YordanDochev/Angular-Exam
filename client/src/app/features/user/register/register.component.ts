@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { from } from 'rxjs';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
@@ -11,12 +11,12 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   form = this.fb.group({
-    username: [''],
-    email: [''],
-    tel: [''],
+    username: ['',Validators.required],
+    email: ['',Validators.required],
+    tel: ['',Validators.required],
     passGroup: this.fb.group({
-      password: [''],
-      rePassword: [''],
+      password: ['',Validators.required],
+      rePassword: ['',Validators.required],
     }),
   });
 
@@ -40,7 +40,8 @@ export class RegisterComponent {
 
     this.userService
       .register(username!, email!, tel!, password!, rePassword!)
-      .subscribe(() => {
+      .subscribe((data) => {
+        localStorage.setItem('UserId', data._id);
         this.router.navigate(['/home']);
       });
   }

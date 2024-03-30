@@ -8,15 +8,16 @@ import { UserService } from 'src/app/features/user/user.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(private userService: UserService,private router:Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
-  get isLoggedIn():boolean {
+  get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }
 
-  userLogout(){
-    this.userService.logout().subscribe(()=>{
-      this.router.navigate(['/home'])
-    })
+  userLogout() {
+    this.userService.logout().subscribe(() => {
+      localStorage.removeItem('UserId');
+      this.router.navigate(['/home']);
+    });
   }
 }
