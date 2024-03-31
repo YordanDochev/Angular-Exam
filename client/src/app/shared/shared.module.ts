@@ -5,9 +5,10 @@ import { CardCarComponent } from './card-car/card-car.component';
 import { RouterModule } from '@angular/router';
 import { CarFormComponent } from './car-form/car-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ValidatorDirective } from './validator/validator.directive';
 
 @NgModule({
-  declarations: [LoaderComponent, CardCarComponent, CarFormComponent],
+  declarations: [LoaderComponent, CardCarComponent, CarFormComponent, ValidatorDirective],
   imports: [CommonModule, RouterModule,FormsModule,ReactiveFormsModule],
   exports: [LoaderComponent, CardCarComponent, CarFormComponent],
 })

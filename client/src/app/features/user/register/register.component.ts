@@ -3,6 +3,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { from } from 'rxjs';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { emailValidator } from 'src/app/shared/utils/email-validator';
+import { environment } from '../../../../environments/environment.development';
+import { usernameValidator } from 'src/app/shared/utils/username-validator';
+import { phoneNumberValidator } from 'src/app/shared/utils/phoneNumber-validator';
+import { matchPasswordValidator } from 'src/app/shared/utils/match-password-validator';
 
 @Component({
   selector: 'app-register',
@@ -10,14 +15,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  isFormValid:boolean = true; 
+
   form = this.fb.group({
-    username: ['',Validators.required],
-    email: ['',Validators.required],
-    tel: ['',Validators.required],
+    username: ['', [Validators.required,usernameValidator()]],
+    email: ['', [Validators.required, emailValidator(environment.EMAIL_DOMAINS)]],
+    tel: ['', [Validators.required,phoneNumberValidator()]],
     passGroup: this.fb.group({
-      password: ['',Validators.required],
-      rePassword: ['',Validators.required],
-    }),
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      rePassword: ['', [Validators.required,Validators.minLength(5)]],
+    },
+    { validators: [matchPasswordValidator('password', 'rePassword')] }),
   });
 
   constructor(
@@ -28,6 +36,7 @@ export class RegisterComponent {
 
   registerFormSubmitHandler(): void {
     if (this.form.invalid) {
+      this.isFormValid = false
       return;
     }
 

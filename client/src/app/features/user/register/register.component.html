@@ -21,38 +21,45 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" placeholder="Enter your name" id="username" name="username"
-                                    formControlName="username" required>
+                                <input type="text" placeholder="Enter your username" id="username" name="username"
+                                    formControlName="username" >
 
                             </div>
 
                             <ng-container *ngIf="form.get('username')?.touched">
-                                <p class="error-input" *ngIf="form.get('username')?.errors?.['required']">
-                                    Username is required!
-                                </p>
+                                
+                                <ng-container *ngIf="form.get('username')?.errors?.['usernameValidator']">
+
+                                    <p class="error-input">
+                                        Username must contain one or more characters !
+                                    </p>
+                                </ng-container>
                             </ng-container>
+
 
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
                                 <input type="text" placeholder="Enter your email" id="email" name="email"
-                                    formControlName="email" required>
+                                    formControlName="email">
 
 
                             </div>
                             <ng-container *ngIf="form.get('email')?.touched">
-                                <p class="error-input" *ngIf="form.get('email')?.errors?.['required']">
-                                    Email is required!
+                                
+                                <p class="error-input" *ngIf="form.get('email')?.errors?.['emailValidator']">
+                                    Email is not valid!
                                 </p>
                             </ng-container>
                             <div class="input-box">
                                 <i class="fas fa-phone"></i>
                                 <input type="text" placeholder="Enter your phone number" id="tel" name="tel"
-                                    formControlName="tel" required>
+                                    formControlName="tel" >
 
                             </div>
                             <ng-container *ngIf="form.get('tel')?.touched">
-                                <p class="error-input" *ngIf="form.get('tel')?.errors?.['required']">
-                                    Phone number is required!
+                                <p class="error-input" *ngIf="form.get('tel')?.errors?.['phoneNumberValidator']">
+                                    Phone must contain three or more numbers !
+
                                 </p>
                             </ng-container>
                             <ng-container formGroupName="passGroup">
@@ -60,26 +67,27 @@
                                 <div class="input-box">
                                     <i class="fas fa-lock"></i>
                                     <input type="password" placeholder="Enter your password" id="password"
-                                        name="password" formControlName="password" required>
+                                        name="password" formControlName="password" >
                                 </div>
                                 <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
-                                    <p class="error-input" *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']">
-                                        Password is required!
+                                    <p class="error-input"
+                                        *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength'] || form.get('passGroup')?.get('password')?.errors?.['required']">
+                                        Password must be at least 5 characters!
                                     </p>
                                 </ng-container>
                                 <div class="input-box">
                                     <i class="fas fa-lock"></i>
                                     <input type="password" placeholder="Repeat your password" id="rePassword"
-                                        name="rePassword" formControlName="rePassword" required>
+                                        name="rePassword" formControlName="rePassword">
                                 </div>
                                 <ng-container *ngIf="form.get('passGroup')?.get('rePassword')?.touched">
-                                    <p class="error-input" *ngIf="form.get('passGroup')?.get('rePassword')?.errors?.['required']">
-                                        Password is required!
-                                    </p>
+                                    <p class="error-input"
+                                        *ngIf="form.get('passGroup')?.errors?.['matchPasswordValidator'] || form.get('passGroup')?.get('rePassword')?.errors?.['required']">
+                                        Password does not match password!</p>
                                 </ng-container>
                             </ng-container>
                             <div class="button input-box">
-                                <input type="submit" value="Sumbit">
+                                <input type="submit" value="Sumbit" [disabled]="form.invalid ? true : false">
                             </div>
                             <div class="text sign-up-text">Already have an account? <a routerLink="/login"><label>Login
                                         now</label></a>

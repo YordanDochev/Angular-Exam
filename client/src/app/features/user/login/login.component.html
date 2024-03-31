@@ -17,17 +17,30 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" placeholder="Enter your email" ngModel id="email" name="email" required>
+                                <input type="text" placeholder="Enter your email" ngModel id="email" name="email"
+                                    required #inputEmail="ngModel" minlength="5">
                             </div>
+                            <ng-container *ngIf="inputEmail.touched">
+                                <p class="error-input"
+                                    *ngIf="inputEmail.errors?.['minlength'] || inputEmail.errors?.['required']">
+                                    Email must be at least 5 symbols!
+                                </p>
+                            </ng-container>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Enter your password" ngModel id="password" name="password"
-                                    required>
+                                <input type="password" placeholder="Enter your password" ngModel id="password"
+                                    name="password" required minlength="5" #inputPassword="ngModel">
                             </div>
+                            <ng-container *ngIf="inputPassword.touched">
+                                <p class="error-input"
+                                    *ngIf="inputPassword.errors?.['minlength'] || inputPassword.errors?.['required']">
+                                    Password must be at least 5 characters!
+                                </p>
+                            </ng-container>
                             <div class="button input-box">
-                                <input type="submit" value="Sumbit">
+                                <input type="submit" value="Sumbit" [disabled]="form.invalid ? true : false">
                             </div>
-                            <div class="text sign-up-text">Don't have an account? 
+                            <div class="text sign-up-text">Don't have an account?
                                 <a routerLink="/register"><span>Sigup now</span></a>
                             </div>
                         </div>
