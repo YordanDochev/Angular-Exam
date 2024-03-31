@@ -78,11 +78,11 @@
                                 <div class="input-box">
                                     <i class="fas fa-lock"></i>
                                     <input type="password" placeholder="Repeat your password" id="rePassword"
-                                        name="rePassword" formControlName="rePassword">
+                                        name="rePassword" formControlName="rePassword" >
                                 </div>
-                                <ng-container *ngIf="form.get('passGroup')?.get('rePassword')?.touched">
+                                <ng-container *ngIf="form.get('passGroup')?.errors?.['matchPasswordValidator'] || form.get('passGroup')?.get('rePassword')?.errors?.['required']">
                                     <p class="error-input"
-                                        *ngIf="form.get('passGroup')?.errors?.['matchPasswordValidator'] || form.get('passGroup')?.get('rePassword')?.errors?.['required']">
+                                        >
                                         Password does not match password!</p>
                                 </ng-container>
                             </ng-container>

@@ -12,13 +12,12 @@ import {
   Validator,
   ValidatorFn,
 } from '@angular/forms';
-import { emailValidator } from '../utils/email-validator';
-import { usernameValidator } from '../utils/username-validator';
-import { phoneNumberValidator } from '../utils/phoneNumber-validator';
-import { matchPasswordValidator } from '../utils/match-password-validator';
+import { emailValidator } from '../../utils/email-validator';
+import { usernameValidator } from '../../utils/username-validator';
+import { phoneNumberValidator } from '../../utils/phoneNumber-validator';
 
 @Directive({
-  selector: '[appValidator]',
+  selector: '[appUserValidator]',
   providers: [
     {
       multi: true,

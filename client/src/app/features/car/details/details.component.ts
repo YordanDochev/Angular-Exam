@@ -26,7 +26,7 @@ export class DetailsPageComponent implements OnInit {
       this.carService.getCar(id).subscribe((data) => {
         this.car = data;
       });
-      this.userService.getProfile().subscribe((data) => {
+      this.userService.user$.subscribe((data) => {
         this.isOwner = !!data?.cars.find((x) => x === id);
       });
     });

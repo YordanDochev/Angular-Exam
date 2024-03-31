@@ -7,13 +7,32 @@
                     <input type="text" name="postName" id="postName" placeholder="Post Name" class="formbold-form-input"
                         formControlName="postName" />
                 </div>
+                <ng-container *ngIf="form.get('postName')?.touched">
+                    <p class="error-input"
+                        *ngIf="form.get('postName')?.errors?.['minlength'] || form.get('postName')?.errors?.['required']">
+                        Post name is invalid!</p>
+                </ng-container>
+                <ng-container *ngIf="form.get('postName')?.errors?.['maxlength']">
+                    <p class="error-input">
+                        Post name can not be more than 100 characters!</p>
+                </ng-container>
             </div>
             <div class="formbold-input-flex">
                 <div>
                     <label for="carBrand" class="formbold-form-label"> Car Model </label>
                     <input type="text" name="carBrand" id="carBrand" placeholder="Car Model" class="formbold-form-input"
                         formControlName="carBrand" />
+                    <ng-container *ngIf="form.get('carBrand')?.touched">
+                        <p class="error-input"
+                            *ngIf="form.get('carBrand')?.errors?.['minlength'] || form.get('carBrand')?.errors?.['required']">
+                            Brand is invalid!</p>
+                    </ng-container>
+                    <ng-container *ngIf="form.get('carBrand')?.errors?.['maxlength']">
+                        <p class="error-input">
+                            Brand can not be more than 50 characters!</p>
+                    </ng-container>
                 </div>
+
 
                 <div>
                     <label class="formbold-form-label" for="type">Type of exploitation</label>
@@ -23,6 +42,10 @@
                         <option value="Brand new">Brand new</option>
                         <option value="Used">Used</option>
                     </select>
+                    <ng-container *ngIf="form.get('type')?.touched">
+                        <p class="error-input" *ngIf="form.get('type')?.errors?.['required']">
+                            Type of exploitation is required!</p>
+                    </ng-container>
                 </div>
             </div>
             <ng-container formGroupName="images">
@@ -31,12 +54,32 @@
 
                     <input type="text" name="image1" id="image1" placeholder="Car image"
                         class="formbold-form-input formbold-mb-3" formControlName="image1" />
+                    <ng-container *ngIf="form.get('images')?.get('image1')?.touched">
+                        <p class="error-input"
+                            *ngIf="form.get('images')?.get('image1')?.errors?.['urlAddressValidator'] || form.get('images')?.get('image1')?.errors?.['required']">
+                            URL address is invalid!</p>
+                    </ng-container>
                     <input type="text" name="image2" id="image2" placeholder="Car image"
                         class="formbold-form-input formbold-mb-3" formControlName="image2" />
+                    <ng-container *ngIf="form.get('images')?.get('image2')?.touched">
+                        <p class="error-input"
+                            *ngIf="form.get('images')?.get('image2')?.errors?.['urlAddressValidator'] || form.get('images')?.get('image2')?.errors?.['required']">
+                            URL address is invalid!</p>
+                    </ng-container>
                     <input type="text" name="image3" id="image3" placeholder="Car image"
                         class="formbold-form-input formbold-mb-3" formControlName="image3" />
+                    <ng-container *ngIf="form.get('images')?.get('image3')?.touched">
+                        <p class="error-input"
+                            *ngIf="form.get('images')?.get('image3')?.errors?.['urlAddressValidator'] || form.get('images')?.get('image3')?.errors?.['required']">
+                            URL address is invalid!</p>
+                    </ng-container>
                     <input type="text" name="image4" id="image4" placeholder="Car image"
                         class="formbold-form-input formbold-mb-3" formControlName="image4" />
+                    <ng-container *ngIf="form.get('images')?.get('image4')?.touched">
+                        <p class="error-input"
+                            *ngIf="form.get('images')?.get('image4')?.errors?.['urlAddressValidator'] || form.get('images')?.get('image4')?.errors?.['required']">
+                            URL address is invalid!</p>
+                    </ng-container>
                 </div>
             </ng-container>
 
@@ -46,12 +89,21 @@
                     <label for="engineSize" class="formbold-form-label"> Engine Size </label>
                     <input type="number" name="engineSize" id="engineSize" placeholder="Engine Size"
                         class="formbold-form-input" formControlName="engineSize" />
+                    <ng-container *ngIf="form.get('engineSize')?.touched">
+                        <p class="error-input"
+                            *ngIf="form.get('engineSize')?.errors?.['max'] || form.get('engineSize')?.errors?.['min']">
+                            Engine size is inavlid!</p>
+                    </ng-container>
                 </div>
                 <div>
 
                     <label for="power" class="formbold-form-label"> Horse Power </label>
                     <input type="number" name="power" id="power" placeholder="Horse Power" class="formbold-form-input"
                         formControlName="power" />
+                    <ng-container *ngIf="form.get('power')?.touched">
+                        <p class="error-input" *ngIf="form.get('power')?.errors?.['max']">
+                            Horse power is inavlid!</p>
+                    </ng-container>
                 </div>
 
                 <div>
@@ -59,6 +111,11 @@
                     <label for="year" class="formbold-form-label"> Year </label>
                     <input type="number" name="year" id="year" placeholder="Year" class="formbold-form-input"
                         formControlName="year" />
+                    <ng-container *ngIf="form.get('year')?.touched">
+                        <p class="error-input"
+                            *ngIf="form.get('year')?.errors?.['max'] || form.get('year')?.errors?.['min']">
+                            Year is inavlid!</p>
+                    </ng-container>
                 </div>
 
             </div>
@@ -72,6 +129,10 @@
                         <option value="Manual">Manual</option>
                         <option value="Automatic">Automatic</option>
                     </select>
+                    <ng-container *ngIf="form.get('gearbox')?.touched">
+                        <p class="error-input" *ngIf="form.get('gearbox')?.errors?.['required']">
+                            Type of gearbox is required!</p>
+                    </ng-container>
                 </div>
                 <div>
                     <label class="formbold-form-label" for="fuel">Fuel</label>
@@ -81,12 +142,20 @@
                         <option value="Diesel">Diesel</option>
                         <option value="Gasoline">Gasoline</option>
                     </select>
+                    <ng-container *ngIf="form.get('fuel')?.touched">
+                        <p class="error-input" *ngIf="form.get('fuel')?.errors?.['required']">
+                            Type of fuel is required!</p>
+                    </ng-container>
                 </div>
                 <div>
 
                     <label for="power" class="formbold-form-label" for="mileage"> Mileage </label>
                     <input type="number" name="mileage" id="mileage" placeholder="Miles driven"
                         class="formbold-form-input" formControlName="mileage" />
+                    <ng-container *ngIf="form.get('mileage')?.touched">
+                        <p class="error-input" *ngIf="form.get('mileage')?.errors?.['max']">
+                            Mileage is required!</p>
+                    </ng-container>
                 </div>
 
             </div>
@@ -96,22 +165,44 @@
                 <textarea rows="6" name="description" id="description" class="formbold-form-input"
                     formControlName="description"></textarea>
             </div>
-
+            <ng-container *ngIf="form.get('description')?.touched">
+                <p class="error-input"
+                    *ngIf="form.get('description')?.errors?.['minlength'] || form.get('description')?.errors?.['required']">
+                    Description is invalid!</p>
+            </ng-container>
+            <ng-container *ngIf="form.get('description')?.errors?.['maxlength']">
+                <p class="error-input">
+                    Description can not be more than 2000 characters!</p>
+            </ng-container>
             <div class="formbold-input-flex">
                 <div>
 
                     <label for="color" class="formbold-form-label"> Color </label>
                     <input type="string" name="color" id="color" placeholder="Color of the vehicle"
                         class="formbold-form-input" formControlName="color" />
+                    <ng-container *ngIf="form.get('color')?.touched">
+                        <p class="error-input"
+                            *ngIf="form.get('color')?.errors?.['minlength'] || form.get('color')?.errors?.['required']">
+                            Color is invalid!</p>
+                    </ng-container>
                 </div>
                 <div>
 
                     <label for="price" class="formbold-form-label"> Price </label>
                     <input type="string" name="price" id="price" placeholder="Price" class="formbold-form-input"
                         formControlName="price" />
+                    <ng-container *ngIf="form.get('price')?.touched">
+                        <p class="error-input"
+                            *ngIf="form.get('price')?.errors?.['min'] || form.get('price')?.errors?.['required']">
+                            Price is invalid!</p>
+                    </ng-container>
+                    <ng-container *ngIf="form.get('price')?.errors?.['max']">
+                        <p class="error-input">
+                            Price can not be more than 100000000 euro !</p>
+                    </ng-container>
                 </div>
             </div>
-            <input type="submit" class="formbold-btn" value="Sumbit">
+            <input type="submit" class="formbold-btn" value="Sumbit" [disabled]="form.invalid ? true:false ">
             <!-- <button class="formbold-btn" type="submit">Apply Now</button> -->
         </form>
     </div>

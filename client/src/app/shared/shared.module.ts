@@ -5,7 +5,7 @@ import { CardCarComponent } from './card-car/card-car.component';
 import { RouterModule } from '@angular/router';
 import { CarFormComponent } from './car-form/car-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ValidatorDirective } from './validator/validator.directive';
+import { ValidatorDirective } from './validator/user/validator-user.directive';
 
 @NgModule({
   declarations: [LoaderComponent, CardCarComponent, CarFormComponent, ValidatorDirective],

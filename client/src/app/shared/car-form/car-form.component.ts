@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { CarService } from '../../features/car/car.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { urlAddressValidator } from '../utils/url-address-validator';
 
 @Component({
   selector: 'app-car-form',
@@ -12,24 +13,24 @@ export class CarFormComponent implements OnInit {
   isEditMode: boolean = false;
   private id: string | undefined;
   form = this.fb.group({
-    postName: [''],
-    carBrand: [''],
-    type: [''],
+    postName: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(100)]],
+    carBrand: ['',[Validators.required,Validators.minLength(2),Validators.maxLength(50)]],
+    type: ['',Validators.required],
     images: this.fb.group({
-      image1: [''],
-      image2: [''],
-      image3: [''],
-      image4: [''],
+      image1: ['',[Validators.required,urlAddressValidator()]],
+      image2: ['',[Validators.required,urlAddressValidator()]],
+      image3: ['',[Validators.required,urlAddressValidator()]],
+      image4: ['',[Validators.required,urlAddressValidator()]],
     }),
-    engineSize: [0],
-    power: [0],
-    year: [2000],
-    gearbox: [''],
-    fuel: [''],
-    mileage: [0],
-    description: [''],
-    color: [''],
-    price: [''],
+    engineSize: [1000,[Validators.required,Validators.max(6000),Validators.min(1000)]],
+    power: [0,[Validators.required,Validators.max(1000)]],
+    year: [1900,[Validators.required,Validators.max(2024),Validators.min(1900)]],
+    gearbox: ['',Validators.required],
+    fuel: ['',Validators.required],
+    mileage: [0,[Validators.required,Validators.max(100000000)]],
+    description: ['',[Validators.required,Validators.minLength(10),Validators.maxLength(2000)]],
+    color: ['',[Validators.required,Validators.minLength(2)]],
+    price: ['',[Validators.required,Validators.min(1000),Validators.max(100000000)]],
   });
 
   constructor(
