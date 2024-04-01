@@ -15,8 +15,13 @@ export class CarDetailsComponent {
   constructor(private carService: CarService, private router: Router) {}
 
   onClickDeleteHanlder(id: string) {
-    this.carService.deleteEntry(id).subscribe(() => {
-      this.router.navigate(['/catalog']);
-    });
+    const hasConfirmed = confirm(
+      `Are you sure you want to delete ${this.car.postName}`
+    );
+    if (hasConfirmed) {
+      this.carService.deleteEntry(id).subscribe(() => {
+        this.router.navigate(['/catalog']);
+      });
+    }
   }
 }

@@ -20,7 +20,7 @@ export interface Car {
   mileage: number;
   description: string;
   color: string;
-  price: string;
+  price: number;
   _id: string;
   subscribers: string[];
   posts: string[];
@@ -43,5 +43,5 @@ export interface CarEditValue {
   mileage: number | undefined;
   description: string | undefined;
   color: string | undefined;
-  price: string | undefined;
+  price: number | undefined;
 }

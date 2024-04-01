@@ -13,7 +13,6 @@ export class CarService implements OnDestroy {
   car: Car | undefined;
   carSubscription: Subscription;
 
-
   constructor(private http: HttpClient) {
     this.carSubscription = this.car$.subscribe((data) => {
       this.car = data;
@@ -51,7 +50,7 @@ export class CarService implements OnDestroy {
     mileage: number,
     description: string,
     color: string,
-    price: string
+    price: number
   ) {
     return this.http
       .post<Car>('/api/cars', {
@@ -86,7 +85,7 @@ export class CarService implements OnDestroy {
     mileage: number,
     description: string,
     color: string,
-    price: string
+    price: number
   ) {
     return this.http
       .put<Car>(`/api/cars/edit/${id}`, {
@@ -114,6 +113,6 @@ export class CarService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.carSubscription.unsubscribe()
+    this.carSubscription.unsubscribe();
   }
 }

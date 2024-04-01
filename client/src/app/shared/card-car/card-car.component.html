@@ -6,15 +6,16 @@
         <h4>{{car.postName}}</h4>
         <div style="margin-bottom:10px;">
             <span>
-                {{car.price}}<sup>$</sup>
+                {{car.price | formatNumbers}}<sup>$</sup>
             </span>
         </div>
 
         <p>
-            <i class="fa fa-dashboard"></i> {{car.mileage}}km &nbsp;&nbsp;&nbsp;
+            <i class="fa fa-dashboard"></i> {{car.mileage | formatNumbers}}km &nbsp;&nbsp;&nbsp;
             <i class="fa fa-cube"></i> {{car.engineSize}} cc &nbsp;&nbsp;&nbsp;
             <i class="fa fa-cog"></i> {{car.gearbox}} &nbsp;&nbsp;&nbsp;
         </p>
+        <p>Published by {{car.userId.username}} {{car.created_at | elapsedTimes}}</p>
         <a [routerLink]="'/details/'+car._id" class="filled-button">View More</a>
     </div>
 </div>

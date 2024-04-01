@@ -1,8 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
-import { AuthUser } from 'src/app/types/user';
-
+import { AuthUser, UserCars } from 'src/app/types/user';
+import { Car } from 'src/app/types/car';
 
 @Injectable({
   providedIn: 'root',
@@ -15,14 +15,12 @@ export class UserService implements OnDestroy {
   userSubscription: Subscription;
 
   get isLogged(): boolean {
-    
     return !!this.user;
   }
 
-
   constructor(private http: HttpClient) {
     this.userSubscription = this.user$.subscribe((data) => {
-      this.user = data;      
+      this.user = data;
     });
   }
 
@@ -56,10 +54,15 @@ export class UserService implements OnDestroy {
       .pipe(tap(() => this.user$$.next(undefined)));
   }
 
-  getProfile(){
-    return this.http.get<AuthUser>('/api/users/profile').pipe(tap((data)=>this.user$$.next(data)))
+  getProfile() {
+    return this.http
+      .get<AuthUser>('/api/users/profile')
+      .pipe(tap((data) => this.user$$.next(data)));
   }
 
+  getMyCars() {
+    return this.http.get<UserCars>('/api/users/my-cars');
+  }
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();

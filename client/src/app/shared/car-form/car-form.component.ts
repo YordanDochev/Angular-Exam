@@ -30,7 +30,7 @@ export class CarFormComponent implements OnInit {
     mileage: [0,[Validators.required,Validators.max(100000000)]],
     description: ['',[Validators.required,Validators.minLength(10),Validators.maxLength(2000)]],
     color: ['',[Validators.required,Validators.minLength(2)]],
-    price: ['',[Validators.required,Validators.min(1000),Validators.max(100000000)]],
+    price: [1000,[Validators.required,Validators.min(1000),Validators.max(100000000)]],
   });
 
   constructor(

@@ -189,7 +189,7 @@
                 <div>
 
                     <label for="price" class="formbold-form-label"> Price </label>
-                    <input type="string" name="price" id="price" placeholder="Price" class="formbold-form-input"
+                    <input type="number" name="price" id="price" placeholder="Price" class="formbold-form-input"
                         formControlName="price" />
                     <ng-container *ngIf="form.get('price')?.touched">
                         <p class="error-input"

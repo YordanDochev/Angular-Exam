@@ -63,7 +63,7 @@
                             <div class="clearfix">
                                 <span class="pull-left">Mileage</span>
 
-                                <strong class="pull-right">{{car.mileage}} km</strong>
+                                <strong class="pull-right">{{car.mileage | formatNumbers}} km</strong>
                             </div>
                         </li>
 
@@ -111,7 +111,7 @@
                             <div class="clearfix">
                                 <span class="pull-left">Price</span>
 
-                                <strong class="pull-right">{{car.price}} $</strong>
+                                <strong class="pull-right">{{car.price | formatNumbers}} $</strong>
                             </div>
                         </li>
                     </ul>

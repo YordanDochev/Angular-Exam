@@ -12,7 +12,7 @@ export class AuthenticationComponent implements OnInit {
 
   constructor(private userService: UserService) {}
   ngOnInit(): void {
-
+    
     this.userService.getProfile().subscribe({
       next: () => (this.isAuthenticating = false),
       error: () => (this.isAuthenticating = false),

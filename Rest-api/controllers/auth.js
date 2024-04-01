@@ -14,32 +14,37 @@ const removePassword = (data) => {
 function register(req, res, next) {
   const { tel, email, username, password, repeatPassword } = req.body;
 
-  return userModel.create({ tel, email, username, password })
-      .then((createdUser) => {
-          createdUser = bsonToJson(createdUser);
-          createdUser = removePassword(createdUser);
+  return userModel
+    .create({ tel, email, username, password })
+    .then((createdUser) => {
+      createdUser = bsonToJson(createdUser);
+      createdUser = removePassword(createdUser);
 
-          const token = utils.jwt.createToken({ id: createdUser._id });
-          if (process.env.NODE_ENV === 'production') {
-              res.cookie(authCookieName, token, { httpOnly: true, sameSite: 'none', secure: true })
-          } else {
-              res.cookie(authCookieName, token, { httpOnly: true })
-          }
-          res.status(200)
-              .send(createdUser);
-      })
-      .catch(err => {
-          if (err.name === 'MongoError' && err.code === 11000) {
-              let field = err.message.split("index: ")[1];
-              field = field.split(" dup key")[0];
-              field = field.substring(0, field.lastIndexOf("_"));
+      const token = utils.jwt.createToken({ id: createdUser._id });
+      if (process.env.NODE_ENV === "production") {
+        res.cookie(authCookieName, token, {
+          httpOnly: true,
+          sameSite: "none",
+          secure: true,
+        });
+      } else {
+        res.cookie(authCookieName, token, { httpOnly: true });
+      }
+      res.status(200).send(createdUser);
+    })
+    .catch((err) => {
+      if (err.name === "MongoError" && err.code === 11000) {
+        let field = err.message.split("index: ")[1];
+        field = field.split(" dup key")[0];
+        field = field.substring(0, field.lastIndexOf("_"));
 
-              res.status(409)
-                  .send({ message: `This ${field} is already registered!` });
-              return;
-          }
-          next(err);
-      });
+        res
+          .status(409)
+          .send({ message: `This ${field} is already registered!` });
+        return;
+      }
+      next(err);
+    });
 }
 
 function login(req, res, next) {
@@ -99,6 +104,21 @@ function getProfileInfo(req, res, next) {
     .catch(next);
 }
 
+function getMyCars(req, res, next) {
+  const { _id: userId } = req.user;
+
+  userModel
+    .findOne(
+      { _id: userId },
+      { password: 0, __v: 0, tel: 0, posts: 0, updatedAt: 0, email: 0 }
+    ) //finding by Id and returning without password and __v
+    .populate("cars")
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch(next);
+}
+
 function editProfileInfo(req, res, next) {
   const { _id: userId } = req.user;
   const { phoneNumber, firstName, email } = req.body;
@@ -121,4 +141,5 @@ module.exports = {
   logout,
   getProfileInfo,
   editProfileInfo,
+  getMyCars,
 };

@@ -23,7 +23,7 @@
                     <!-- Implements is user authenticated -->
                     <ng-container *ngIf="isLoggedIn">
 
-                        <li><a><i class="fa fa-user me-2"></i>Profile</a></li>
+                        <li><a routerLink="/my-profile"><i class="fa fa-user me-2"></i>Profile</a></li>
                         <li><a (click)="userLogout()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 
                                     <path

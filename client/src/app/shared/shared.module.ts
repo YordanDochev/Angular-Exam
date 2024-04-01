@@ -6,10 +6,25 @@ import { RouterModule } from '@angular/router';
 import { CarFormComponent } from './car-form/car-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValidatorDirective } from './validator/user/validator-user.directive';
+import { ElapsedTimesPipe } from './pipes/elapsed-times.pipe';
+import { FormatNumbersPipe } from './pipes/format-numbers.pipe';
 
 @NgModule({
-  declarations: [LoaderComponent, CardCarComponent, CarFormComponent, ValidatorDirective],
-  imports: [CommonModule, RouterModule,FormsModule,ReactiveFormsModule],
-  exports: [LoaderComponent, CardCarComponent, CarFormComponent],
+  declarations: [
+    LoaderComponent,
+    CardCarComponent,
+    CarFormComponent,
+    ValidatorDirective,
+    ElapsedTimesPipe,
+    FormatNumbersPipe,
+  ],
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+  exports: [
+    LoaderComponent,
+    CardCarComponent,
+    CarFormComponent,
+    ElapsedTimesPipe,
+    FormatNumbersPipe,
+  ],
 })
 export class SharedModule {}

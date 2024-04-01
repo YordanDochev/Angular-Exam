@@ -11,6 +11,13 @@ export interface AuthUser {
   updatedAt: string;
 }
 
+export interface UserCars {
+  cars: Car[];
+  _id: string;
+  username: string;
+  created_at: string;
+}
+
 // export interface User {
 //   cars: Car[];
 //   posts: string[];
