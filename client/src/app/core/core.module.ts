@@ -5,9 +5,10 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
-  declarations: [HeaderComponent, NavigationComponent, FooterComponent, NotFoundComponent],
+  declarations: [HeaderComponent, NavigationComponent, FooterComponent, NotFoundComponent, ErrorComponent],
   imports: [CommonModule,RouterModule],
   exports: [HeaderComponent, NavigationComponent, FooterComponent,NotFoundComponent],
 })

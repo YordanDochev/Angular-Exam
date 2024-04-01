@@ -22,12 +22,12 @@
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
                                 <input type="text" placeholder="Enter your username" id="username" name="username"
-                                    formControlName="username" >
+                                    formControlName="username">
 
                             </div>
 
                             <ng-container *ngIf="form.get('username')?.touched">
-                                
+
                                 <ng-container *ngIf="form.get('username')?.errors?.['usernameValidator']">
 
                                     <p class="error-input">
@@ -45,7 +45,7 @@
 
                             </div>
                             <ng-container *ngIf="form.get('email')?.touched">
-                                
+
                                 <p class="error-input" *ngIf="form.get('email')?.errors?.['emailValidator']">
                                     Email is not valid!
                                 </p>
@@ -53,7 +53,7 @@
                             <div class="input-box">
                                 <i class="fas fa-phone"></i>
                                 <input type="text" placeholder="Enter your phone number" id="tel" name="tel"
-                                    formControlName="tel" >
+                                    formControlName="tel">
 
                             </div>
                             <ng-container *ngIf="form.get('tel')?.touched">
@@ -67,7 +67,7 @@
                                 <div class="input-box">
                                     <i class="fas fa-lock"></i>
                                     <input type="password" placeholder="Enter your password" id="password"
-                                        name="password" formControlName="password" >
+                                        name="password" formControlName="password">
                                 </div>
                                 <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
                                     <p class="error-input"
@@ -78,13 +78,17 @@
                                 <div class="input-box">
                                     <i class="fas fa-lock"></i>
                                     <input type="password" placeholder="Repeat your password" id="rePassword"
-                                        name="rePassword" formControlName="rePassword" >
+                                        name="rePassword" formControlName="rePassword">
                                 </div>
-                                <ng-container *ngIf="form.get('passGroup')?.errors?.['matchPasswordValidator'] || form.get('passGroup')?.get('rePassword')?.errors?.['required']">
-                                    <p class="error-input"
-                                        >
+                                <ng-container *ngIf="form.get('passGroup')?.errors?.['matchPasswordValidator']">
+                                    <p class="error-input">
                                         Password does not match password!</p>
                                 </ng-container>
+                            </ng-container>
+                            <ng-container *ngIf="!!errors">
+                                <p class="error-input">
+                                    {{errors}}
+                                </p>
                             </ng-container>
                             <div class="button input-box">
                                 <input type="submit" value="Sumbit" [disabled]="form.invalid ? true : false">

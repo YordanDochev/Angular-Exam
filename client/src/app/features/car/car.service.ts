@@ -1,19 +1,21 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, tap } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { Car } from 'src/app/types/car';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CarService {
+export class CarService implements OnDestroy {
   private car$$ = new BehaviorSubject<Car | undefined>(undefined);
   public car$ = this.car$$.asObservable();
 
   car: Car | undefined;
+  carSubscription: Subscription;
+
 
   constructor(private http: HttpClient) {
-    this.car$.subscribe((data) => {
+    this.carSubscription = this.car$.subscribe((data) => {
       this.car = data;
     });
   }
@@ -109,5 +111,9 @@ export class CarService {
     return this.http
       .delete<Car>(`/api/cars/delete/${id}`)
       .pipe(tap((data) => this.car$$.next(data)));
+  }
+
+  ngOnDestroy(): void {
+    this.carSubscription.unsubscribe()
   }
 }

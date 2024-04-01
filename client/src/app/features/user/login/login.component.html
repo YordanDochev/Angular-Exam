@@ -37,9 +37,15 @@
                                     Password must be at least 5 characters!
                                 </p>
                             </ng-container>
+                            <ng-container *ngIf="!!errors">
+                                <p class="error-input">
+                                    {{errors}}
+                                </p>
+                            </ng-container>
                             <div class="button input-box">
                                 <input type="submit" value="Sumbit" [disabled]="form.invalid ? true : false">
                             </div>
+
                             <div class="text sign-up-text">Don't have an account?
                                 <a routerLink="/register"><span>Sigup now</span></a>
                             </div>

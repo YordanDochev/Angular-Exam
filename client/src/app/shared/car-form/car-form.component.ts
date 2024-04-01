@@ -105,9 +105,11 @@ export class CarFormComponent implements OnInit {
           color!,
           price!
         )
-        .subscribe(() => {
-          this.router.navigate(['/catalog']);
+        .subscribe({
+          next: () => (this.router.navigate(['/catalog'])),
+          error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
         });
+        
     } else {
       this.carService
         .editEntry(
@@ -126,9 +128,11 @@ export class CarFormComponent implements OnInit {
           color!,
           price!
         )
-        .subscribe(() => {
-          this.router.navigate([`/details/${this.id}`]);
+        .subscribe({
+          next: () => (this.router.navigate([`/details/${this.id}`])),
+          error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
         });
+        
     }
     this.form.reset();
   }

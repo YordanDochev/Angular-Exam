@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/types/car';
 import { CarService } from '../car.service';
 import { UserService } from '../../user/user.service';
@@ -17,15 +17,19 @@ export class DetailsPageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private carService: CarService,
-    private userService: UserService
+    private userService: UserService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((data) => {
       const id = data['carId'];
-      this.carService.getCar(id).subscribe((data) => {
-        this.car = data;
+      this.carService.getCar(id)
+      .subscribe({
+        next: (data) => (this.car = data),
+        error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
       });
+
       this.userService.user$.subscribe((data) => {
         this.isOwner = !!data?.cars.find((x) => x === id);
       });

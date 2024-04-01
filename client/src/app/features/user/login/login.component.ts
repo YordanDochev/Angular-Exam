@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class LoginComponent {
   domains: string[] = environment.EMAIL_DOMAINS;
+  errors: string | undefined;
   constructor(private userService: UserService, private router: Router) {}
 
   loginFormSubminHandler(form: NgForm) {
@@ -20,9 +21,15 @@ export class LoginComponent {
 
     const { email, password } = form.value;
 
-    this.userService.login(email, password).subscribe((data) => {
-      localStorage.setItem('UserId', data._id);
-      this.router.navigate(['/home']);
+    this.userService.login(email, password).subscribe({
+      next: (data) => {
+        localStorage.setItem('UserId', data._id);
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        alert(error.error.message);
+        this.errors = error.error.message;
+      },
     });
   }
 }
