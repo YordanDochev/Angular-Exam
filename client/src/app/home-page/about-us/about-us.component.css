@@ -51,3 +51,7 @@
 .more-info .right-content p {
     margin-bottom: 30px;
 }
+
+.image-area{
+    align-items: center;
+}
