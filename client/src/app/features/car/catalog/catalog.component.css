@@ -50,7 +50,7 @@
 }
 
 .services {
-	margin-top: 140px;
+	margin-top: 80px;
 }
 
 .service-item img {
@@ -93,5 +93,23 @@
 	background-color: #a4c639;
 }
 
+input.filled-button {
+	background-color: #a4c639;
+	color: #fff;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 12px 30px;
+	border-radius: 10px;
+	display: inline-block;
+	transition: all 0.3s;
+	margin-top: 20px;
+	margin-right: 20px;
+	margin-bottom: 80px;
+}
 
+input.filled-button:hover {
+	background-color: #fff;
+	color: #a4c639;
+}
 

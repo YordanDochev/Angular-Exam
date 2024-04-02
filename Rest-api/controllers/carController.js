@@ -77,6 +77,34 @@ function getLatestsCars(req, res, next) {
     .catch(next);
 }
 
+async function searchCars(req, res, next) {
+  const { model, type, priceFrom, priceTo } = req.body;
+
+  let cars = await carModel.find().lean().populate("userId");
+
+  if (model) {
+    cars = cars.filter((car) =>
+      car.carBrand.toLocaleLowerCase().includes(model.toLocaleLowerCase())
+    );
+  }
+
+  if (type) {
+    cars = cars.filter((car) =>
+      car.type.toLocaleLowerCase().includes(type.toLocaleLowerCase())
+    );
+  }
+
+  if (priceFrom) {
+    cars = cars.filter((car) => car.price >= Number(priceFrom));
+  }
+
+  if (priceTo) {
+    cars = cars.filter((car) => car.price <= Number(priceTo));
+  }
+
+  res.status(200).json(cars);
+}
+
 function editCar(req, res, next) {
   const { carId } = req.params;
   const {
@@ -146,14 +174,39 @@ function deleteCar(req, res, next) {
 }
 
 function subscribe(req, res, next) {
-  const themeId = req.params.themeId;
+  const { carId } = req.body;
   const { _id: userId } = req.user;
-  themeModel
-    .findByIdAndUpdate(
-      { _id: themeId },
+  Promise.all([
+    carModel.findByIdAndUpdate(
+      { _id: carId },
       { $addToSet: { subscribers: userId } },
       { new: true }
-    )
+    ),
+    userModel.findByIdAndUpdate(
+      { _id: userId },
+      { $addToSet: { subscribes: carId } },
+      { new: true }
+    ),
+  ])
+    .then((updatedTheme) => {
+      res.status(200).json(updatedTheme);
+    })
+    .catch(next);
+}
+
+function unsubscribe(req, res, next) {
+  const { carId } = req.body;
+  const { _id: userId } = req.user;
+  Promise.all([
+    carModel.findByIdAndUpdate(
+      { _id: carId },
+      { $pull: { subscribers: userId } },
+    ),
+    userModel.findByIdAndUpdate(
+      { _id: userId },
+      { $pull: { subscribes: carId } },
+    ),
+  ])
     .then((updatedTheme) => {
       res.status(200).json(updatedTheme);
     })
@@ -168,4 +221,6 @@ module.exports = {
   getLatestsCars,
   editCar,
   deleteCar,
+  searchCars,
+  unsubscribe,
 };

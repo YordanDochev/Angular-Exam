@@ -17,8 +17,35 @@
                     <span>Published advertisements are stored here</span>
                 </div>
             </div>
+            <ng-container *ngIf="myCars.length === 0">
+                <div class="section-heading">
+                    <h2>You have not published <em>Cars</em> yet.</h2>
+                </div>
+            </ng-container>
+
             <div class="card-item-holder">
-                <app-card-car *ngFor="let car of cars" [car]="car" />
+                <app-card-car *ngFor="let car of myCars" [car]="car" />
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Your subscribed <em>Cars</em></h2>
+                    <span>Subscribed advertisements are stored here</span>
+                </div>
+            </div>
+            <ng-container *ngIf="myCarsSubscribed.length === 0">
+                <div class="section-heading">
+                    <h2>You have not subscribed <em>Cars</em> yet.</h2>
+                </div>
+            </ng-container>
+            <div class="card-item-holder">
+                <app-card-car *ngFor="let car of myCarsSubscribed" [car]="car" />
             </div>
 
         </div>

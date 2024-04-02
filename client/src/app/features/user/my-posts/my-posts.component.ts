@@ -8,7 +8,9 @@ import { Car } from 'src/app/types/car';
   styleUrls: ['./my-posts.component.css'],
 })
 export class MyPostsComponent implements OnInit {
-  cars: Car[] = [];
+  myCars: Car[] = [];
+  myCarsSubscribed: Car[] = [];
+  
   username: string = '';
 
   constructor(private userService: UserService) {}
@@ -17,8 +19,12 @@ export class MyPostsComponent implements OnInit {
     this.userService.getMyCars().subscribe((data) => {
       console.log(data);
 
-      this.cars = data.cars;
+      this.myCars = data.cars;
       this.username = data.username;
     });
+
+    this.userService
+      .getMyCarsSubscribes()
+      .subscribe((data) => this.myCarsSubscribed = data.subscribes);
   }
 }

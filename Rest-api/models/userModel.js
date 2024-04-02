@@ -40,9 +40,9 @@ const userSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "Car"
     }],
-    posts: [{
+    subscribes: [{
         type: ObjectId,
-        ref: "Post"
+        ref: "Car"
     }]
 }, { timestamps: { createdAt: 'created_at' } });
 

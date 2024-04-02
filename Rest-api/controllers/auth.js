@@ -119,6 +119,20 @@ function getMyCars(req, res, next) {
     .catch(next);
 }
 
+function getMyCarsSubscribes(req, res, next) {
+  const { _id: userId } = req.user;
+  userModel
+    .findOne(
+      { _id: userId },
+      { password: 0, __v: 0, tel: 0, posts: 0, updatedAt: 0, email: 0 }
+    ) //finding by Id and returning without password and __v
+    .populate("subscribes")
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch(next);
+}
+
 function editProfileInfo(req, res, next) {
   const { _id: userId } = req.user;
   const { phoneNumber, firstName, email } = req.body;
@@ -142,4 +156,5 @@ module.exports = {
   getProfileInfo,
   editProfileInfo,
   getMyCars,
+  getMyCarsSubscribes
 };

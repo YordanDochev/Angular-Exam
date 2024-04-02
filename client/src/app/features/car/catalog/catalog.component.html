@@ -10,60 +10,47 @@
 
 <div class="services">
     <div class="container">
-        <form method="get" id="contact">
+        <div class="col-md-12">
+            <div class="section-heading">
+                <h2>Catalog <em>Cars</em></h2>
+                <span>Published advertisements are stored here</span>
+            </div>
+        </div>
+        <form #form="ngForm" (ngSubmit)="onSerachHandler(form)" method="#" action="#">
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>Used/New:</label>
-
-                        <select class="form-control">
-                            <option value="">All</option>
-                            <option value="new">New vehicle</option>
-                            <option value="used">Used vehicle</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>Vehicle Type:</label>
-
-                        <select class="form-control">
-                            <option value="">--All --</option>
-                            <option value="">--All --</option>
-                            <option value="">--All --</option>
-                            <option value="">--All --</option>
-                            <option value="">--All --</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>Make:</label>
-
-                        <select class="form-control">
-                            <option value="">-- All --</option>
-                            <option value="">-- All --</option>
-                            <option value="">-- All --</option>
-                            <option value="">-- All --</option>
-                            <option value="">-- All --</option>
-                            <option value="">-- All --</option>
-                            <option value="">-- All --</option>
-                        </select>
-                    </div>
-                </div>
-
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
                         <label>Model:</label>
 
-                        <select class="form-control">
-                            <option value="">-- All --</option>
-                            <option value="">-- All --</option>
-                            <option value="">-- All --</option>
-                            <option value="">-- All --</option>
+                        <input type="text" class="form-control" ngModel name="model" id="model">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Used/New:</label>
+
+                        <select class="form-control" ngModel id="type" name="type">
+                            <option value="">All</option>
+                            <option value="Brand new">New vehicle</option>
+                            <option value="Used">Used vehicle</option>
                         </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Price from:</label>
+
+                        <input type="number" class="form-control" value="0" ngModel name="priceFrom" id="priceFrom">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Price to:</label>
+
+                        <input type="number" class="form-control" value="1000" ngModel name="priceTo" id="priceTo">
                     </div>
                 </div>
             </div>
@@ -71,6 +58,7 @@
             <div class="col-sm-4 offset-sm-4">
                 <div class="main-button text-center">
                     <input type="submit" class="filled-button" value="Search">
+                    <input type="button" class="filled-button" value="Reset filter" (click)="onResetClickHandler(form)">
                     <!-- <a href="#" class="filled-button">Search</a> -->
                 </div>
             </div>
@@ -79,16 +67,14 @@
         </form>
 
         <div class="row">
-            <div class="col-md-12">
+            <ng-container *ngIf="cars.length === 0">
                 <div class="section-heading">
-                    <h2>Catalog <em>Cars</em></h2>
-                    <span>Published advertisements are stored here</span>
+                    <h2>No matches <em>Cars</em></h2>
                 </div>
-            </div>
-            <div class="card-item-holder">
-                <app-card-car *ngFor="let car of cars" [car]="car" />
-            </div>
-
+            </ng-container>
+                <div class="card-item-holder">
+                    <app-card-car *ngFor="let car of cars" [car]="car" />
+                </div>
         </div>
         <br>
         <br>

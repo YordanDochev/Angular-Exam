@@ -37,6 +37,20 @@ export class CarService implements OnDestroy {
       .pipe(tap(([data]) => this.car$$.next(data)));
   }
 
+  getSearchCars(
+    model: string,
+    type: string,
+    priceFrom: number,
+    priceTo: number
+  ) {
+    return this.http.post<Car[]>('/api/cars/search', {
+      model,
+      type,
+      priceFrom,
+      priceTo,
+    });
+  }
+
   createEntry(
     postName: string,
     carBrand: string,
@@ -109,6 +123,20 @@ export class CarService implements OnDestroy {
   deleteEntry(id: string) {
     return this.http
       .delete<Car>(`/api/cars/delete/${id}`)
+      .pipe(tap((data) => this.car$$.next(data)));
+  }
+
+  subscribeEntry(carId: string) {
+
+    return this.http
+      .put<Car>('/api/cars/subscribe', { carId })
+      .pipe(tap((data) => this.car$$.next(data)));
+  }
+
+  unSubscribeEntry(carId: string) {
+
+    return this.http
+      .put<Car>('/api/cars/unsubscribe', { carId })
       .pipe(tap((data) => this.car$$.next(data)));
   }
 

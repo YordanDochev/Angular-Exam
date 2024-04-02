@@ -64,6 +64,10 @@ export class UserService implements OnDestroy {
     return this.http.get<UserCars>('/api/users/my-cars');
   }
 
+  getMyCarsSubscribes() {
+    return this.http.get<UserCars>('/api/users/my-subscribes');
+  }
+
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }

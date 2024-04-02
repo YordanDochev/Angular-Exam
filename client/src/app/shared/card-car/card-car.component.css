@@ -1,3 +1,29 @@
+.user-interation{
+	display: flex;
+	justify-content: space-between;
+}
+
+.user-interation i{
+	font-size: 25px;
+	color: rgb(17, 166, 240);
+}
+
+.user-interation i:hover{
+	color: rgb(218, 5, 5);
+	cursor: pointer;
+}
+
+.user-interation .subscribed {
+	color: rgb(246, 6, 6);;
+}
+
+.user-interation button{
+	border-color: #f7f7f7;
+	background-color: #f7f7f7;
+	border-radius: 10px;
+	border-bottom-style: none;
+	border-right-style: none
+}
 .services {
 	margin-top: 140px;
 }
