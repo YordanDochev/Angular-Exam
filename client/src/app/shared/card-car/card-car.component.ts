@@ -10,9 +10,9 @@ import { Car } from 'src/app/types/car';
 })
 export class CardCarComponent implements OnInit {
   @Input('car') car = {} as Car;
+  @Input('isOwner') isOwner: boolean = false;
   isSubscribed: boolean = false;
   isLogged: boolean = true;
-  isOwner: boolean = false;
   constructor(
     private carService: CarService,
     private userService: UserService
@@ -31,10 +31,14 @@ export class CardCarComponent implements OnInit {
         this.isLogged = true;
       }
     });
-    if (this.car.userId._id === userId) {
-      this.isOwner = true;
+    if (this.isOwner) {
+      return;
     } else {
-      this.isOwner = false;
+      if (this.car.userId._id === userId) {
+        this.isOwner = true;
+      } else {
+        this.isOwner = false;
+      }
     }
   }
 

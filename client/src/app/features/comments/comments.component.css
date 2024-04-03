@@ -1,0 +1,139 @@
+.testimonial {
+    height: 300px;
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.formbold-form-wrapper {
+    border-radius: 2em;
+    margin: 5em auto;
+    max-width: 700px;
+    width: 100%;
+    background: white;
+    padding: 40px;
+}
+
+.formbold-mb-3 {
+    margin-bottom: 15px;
+}
+
+.formbold-form-label {
+    color: #07074D;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.formbold-form-input {
+    width: 100%;
+    padding: 13px 15px;
+    border-radius: 5px;
+    border: 1px solid #dde3ec;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
+}
+
+.formbold-form-input::placeholder,
+select.formbold-form-input {
+    color: rgba(83, 99, 135, 0.5);
+}
+
+.formbold-form-input:focus {
+    border-color: #a4c639;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold-btn {
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 14px 25px;
+    border: none;
+    font-weight: 500;
+    background-color: #a4c639;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+.formbold-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section-heading{
+    margin-bottom: 20px;
+}
+
+body{
+	background-color: #fff;
+}
+.container{
+	background-color: #eef2f5;
+	width: 400px;
+}
+.addtxt{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	font-size: 13px;
+	width: 350px;
+	background-color: #e5e8ed;
+	font-weight: 500;
+}
+.form-control:focus{
+	color: #000;
+}
+.second{
+	width: 350px;
+	background-color: white;
+	border-radius: 4px;
+	box-shadow: 10px 10px 5px #aaaaaa;
+}
+.text1{
+	font-size: 13px;
+    font-weight: 500;
+    color: #56575b;
+}
+.text2{
+	font-size: 13px;
+    font-weight: 500;
+    margin-left: 6px;
+    color: #56575b;
+}
+.text3{
+	font-size: 13px;
+    font-weight: 500;
+    margin-right: 4px;
+    color: #828386;
+}
+.text3o{
+	color: #00a5f4;
+
+}
+.text4{
+	font-size: 13px;
+    font-weight: 500;
+    color: #828386;
+}
+.text4i{
+	color: #00a5f4;
+}
+.text4o{
+	color: white;
+}
+.thumbup{
+	font-size: 13px;
+    font-weight: 500;
+    margin-right: 5px;
+}
+.thumbupo{
+	color: #17a2b8;
+}

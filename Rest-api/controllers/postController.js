@@ -1,4 +1,4 @@
-const { userModel, themeModel, postModel } = require("../models");
+const { userModel, themeModel, postModel, carModel } = require("../models");
 
 function newPost(text, userId, themeId) {
   return postModel.create({ text, userId, carId }).then((car) => {
@@ -22,13 +22,30 @@ function getLatestsPosts(req, res, next) {
     .catch(next);
 }
 
+function getPosts(req, res, next) {
+  const { carId } = req.params;
+
+  postModel
+    .find({ carId: carId })
+    .populate("userId")
+    .then((posts) => res.json(posts))
+    .catch(next);
+}
+
 function createPost(req, res, next) {
-  const { themeId } = req.params;
+  const { carId } = req.params;
   const { _id: userId } = req.user;
   const { postText } = req.body;
 
-  newPost(postText, userId, themeId)
-    .then(([_, updatedTheme]) => res.status(200).json(updatedTheme))
+  postModel
+    .create({ postText, userId, carId })
+    .then((post) => {
+      res.status(200).json(post);
+      return Promise.all([
+        carModel.updateOne({ _id: carId }, { $addToSet: { posts: post._id } }),
+      ]);
+    })
+
     .catch(next);
 }
 
@@ -89,6 +106,7 @@ module.exports = {
   getLatestsPosts,
   newPost,
   createPost,
+  getPosts,
   editPost,
   deletePost,
   like,

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CarComentsComponent } from './details/car-coments/car-coments.component';
 import { CarDetailsComponent } from './details/car-details/car-details.component';
 import { DetailsPageComponent } from './details/details.component';
 import { CarRoutingModule } from './car-routing.module';
@@ -9,10 +8,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CarsLatesEntriesComponent } from './lates-entries/lates-entries.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CommentsModule } from '../comments/comments.module';
 
 @NgModule({
   declarations: [
-    CarComentsComponent,
     CarDetailsComponent,
     DetailsPageComponent,
     CatalogPageComponent,
@@ -25,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CommentsModule
   ],
   exports: [CarsLatesEntriesComponent],
 })

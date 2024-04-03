@@ -18,7 +18,6 @@ export class DetailsPageComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private carService: CarService,
     private userService: UserService,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
