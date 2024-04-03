@@ -15,11 +15,11 @@ Welcome to the Car Dealer Project! This project allows logged-in users to post t
 
 <h2>Technologies Used</h2>
   <ul>
-    <li>Frontend: Angular for building the user interface.</li>
-    <li>Backend: Node.js and Express.js for the server-side logic.</li>
-    <li>Database: MongoseDB for storing user data, car posts, comments, and subscriptions.</li>
-    <li>Authentication: JSON Web Tokens (JWT) for user authentication and authorization.</li>
-    <li>Styling: CSS for styling the user interface.</li>
+    <li><b>Frontend</b>: Angular for building the user interface.</li>
+    <li><b>Backend</b>: Node.js and Express.js for the server-side logic.</li>
+    <li><b>Database</b>: MongoseDB for storing user data, car posts, comments, and subscriptions.</li>
+    <li><b>Authentication</b>: JSON Web Tokens (JWT) for user authentication and authorization.</li>
+    <li><b>Styling</b>: CSS for styling the user interface.</li>
   </ul>
 
 <h1>Getting Started</h1>
