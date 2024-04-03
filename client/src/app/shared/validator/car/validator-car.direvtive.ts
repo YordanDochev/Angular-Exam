@@ -1,8 +1,6 @@
 import {
     Directive,
-    Input,
     OnChanges,
-    OnInit,
     SimpleChanges,
   } from '@angular/core';
   import {
@@ -24,7 +22,7 @@ import { urlAddressValidator } from '../../utils/url-address-validator';
       },
     ],
   })
-  export class carValidatorDirective implements Validator, OnChanges {
+  export class carValidatorDirective implements Validator {
     constructor() {}
   
     validator: ValidatorFn = () => null;
@@ -33,14 +31,9 @@ import { urlAddressValidator } from '../../utils/url-address-validator';
       return this.validator(control);
     }
   
-    ngOnInit(): void {
-      console.log('invoked');
-      
+    ngOnInit(): void {      
       
       this.validator = urlAddressValidator()
-      
-    }
-    ngOnChanges(changes: SimpleChanges): void {
       
     }
 }

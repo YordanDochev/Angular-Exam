@@ -1,4 +1,3 @@
-import { Car } from "./car";
 import { AuthUser } from "./user";
 
 export interface Post {

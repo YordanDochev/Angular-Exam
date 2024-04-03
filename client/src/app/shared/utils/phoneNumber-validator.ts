@@ -2,7 +2,6 @@ import { ValidatorFn } from "@angular/forms";
 
 export function phoneNumberValidator():ValidatorFn{
 
-    // const regEx = new RegExp(`^\+?(?:[1-9]\d{2,}|\d{3,}(?:-\d+)*)$`)
   const regEx = new RegExp(/^\+?(?:[1-9]\d*|\d+(?:-\d+)*)$/g);
 
 

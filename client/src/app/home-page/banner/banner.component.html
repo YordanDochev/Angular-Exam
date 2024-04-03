@@ -7,13 +7,13 @@
                     <h6>Welcome to our Car Dealer Site!</h6>
                     <h4>Find the perfect car for you from our wide selection of vehicles.</h4>
                     <p>Make your registration and upload your ads. Here you can find the perfect car for you.</p>
-                    <a routerLink="/register" class="filled-button">Get started</a>
+                    
+                    <a *ngIf="!isLoggedIn" routerLink="/register"  class="filled-button">Get started</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Banner Ends Here -->
 
 <div class="request-form">
     <div class="container">

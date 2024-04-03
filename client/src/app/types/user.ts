@@ -19,15 +19,4 @@ export interface UserCars {
   created_at: string;
 }
 
-// export interface User {
-//   cars: Car[];
-//   posts: string[];
-//   _id: string;
-//   tel: string;
-//   email: string;
-//   username: string;
-//   password: string;
-//   created_at: string;
-//   updatedAt: string;
-//   __v: number;
-// }
+

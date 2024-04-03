@@ -15,27 +15,22 @@ export class CatalogPageComponent implements OnInit {
   constructor(private carService: CarService, private router: Router) {}
 
   ngOnInit(): void {
-    this.carService
-      .getAllCars()
-      .subscribe({
-        next: (data) => (this.cars = data),
-        error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
-      });
+    this.carService.getAllCars().subscribe({
+      next: (data) => (this.cars = data),
+      error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
+    });
   }
 
   onSerachHandler(form: NgForm) {
     const { model, type, priceFrom, priceTo } = form.value;
 
-    this.carService
-      .getSearchCars(model, type, priceFrom, priceTo)
-      .subscribe((data) => {
-        console.log(data);
-        
-        this.cars = data
-      } );
+    this.carService.getSearchCars(model, type, priceFrom, priceTo).subscribe({
+      next: (data) => (this.cars = data),
+      error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
+    });
   }
 
-  onResetClickHandler(form:NgForm){
+  onResetClickHandler(form: NgForm) {
     form.reset();
     this.onSerachHandler(form);
   }

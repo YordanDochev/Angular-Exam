@@ -20,7 +20,8 @@ export class NavigationComponent {
     this.router.events.subscribe(() => {
       if (
         this.location.path() === '/register' ||
-        this.location.path() === '/login'
+        this.location.path() === '/login' ||
+        this.location.path() === '/404'
       ) {
         this.isUserAuthenticating = false;
       } else {

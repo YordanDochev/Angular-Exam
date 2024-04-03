@@ -2,7 +2,6 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { AuthUser, UserCars } from 'src/app/types/user';
-import { Car } from 'src/app/types/car';
 
 @Injectable({
   providedIn: 'root',

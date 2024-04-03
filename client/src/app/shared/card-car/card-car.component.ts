@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarService } from 'src/app/features/car/car.service';
 import { UserService } from 'src/app/features/user/user.service';
 import { Car } from 'src/app/types/car';
@@ -15,7 +16,8 @@ export class CardCarComponent implements OnInit {
   isLogged: boolean = true;
   constructor(
     private carService: CarService,
-    private userService: UserService
+    private userService: UserService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -44,12 +46,16 @@ export class CardCarComponent implements OnInit {
 
   onClickSubscribeHandler(id: string) {
     if (this.isSubscribed) {
-      this.carService.unSubscribeEntry(id).subscribe(() => {
-        this.isSubscribed = false;
+      this.carService.unSubscribeEntry(id).subscribe({
+        next: () => this.isSubscribed = false,
+        error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
+
       });
     } else {
-      this.carService.subscribeEntry(id).subscribe(() => {
-        this.isSubscribed = true;
+      this.carService.subscribeEntry(id).subscribe({
+        next: () => this.isSubscribed = true,
+        error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
+
       });
     }
   }

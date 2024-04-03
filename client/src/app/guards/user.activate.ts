@@ -22,7 +22,6 @@ export class UserActivate implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    // console.log(this.user);
 
     if (!!localStorage.getItem('UserId')) {
       return this.router.createUrlTree(['/404']);

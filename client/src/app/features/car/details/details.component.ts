@@ -18,24 +18,23 @@ export class DetailsPageComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private carService: CarService,
     private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    
-
-    
     this.activatedRoute.params.subscribe((data) => {
       const id = data['carId'];
-      this.carService.getCar(id).subscribe((data) => {
-        this.car = data;
+      this.carService.getCar(id).subscribe({
+        next: (data) => (this.car = data),
+        error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
       });
       if (!!localStorage.getItem('UserId')) {
-        this.userService.getProfile().subscribe((data) => {
-          
-          this.isOwner = !!data?.cars.find((x) => x === id);
+        this.userService.getProfile().subscribe({
+          next: (data) => (this.isOwner = !!data?.cars.find((x) => x === id)),
+          error: (error) =>
+            this.router.navigate([`/error/:${error.statusText}`]),
         });
       }
     });
-
   }
 }

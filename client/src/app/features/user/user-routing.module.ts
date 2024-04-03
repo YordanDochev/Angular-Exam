@@ -10,10 +10,14 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [UserActivate] },
   {
     path: 'register',
-    canActivate: [UserActivate],
     component: RegisterComponent,
+    canActivate: [UserActivate],
   },
-  {path: 'my-profile', component:MyPostsComponent, canActivate: [AuthActivate]}
+  {
+    path: 'my-profile',
+    component: MyPostsComponent,
+    canActivate: [AuthActivate],
+  },
 ];
 
 @NgModule({

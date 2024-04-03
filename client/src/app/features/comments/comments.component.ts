@@ -19,30 +19,37 @@ export class CommentsComponent implements OnInit {
   constructor(
     private activeRouter: ActivatedRoute,
     private commentService: CommentsService,
-    private userService:UserService
-    ) {}
+    private userService: UserService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
-    this.activeRouter.params.subscribe((data) => {
-      this.carId = data['carId'];
+    this.activeRouter.params.subscribe({
+      next: (data) => (this.carId = data['carId']),
+      error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
     });
-    this.commentService
-      .getPosts(this.carId)
-      .subscribe((data) => (this.posts = data));
-    this.userService.user$.subscribe((data) => {
-      if (data === undefined) {
-        this.isLogged = false;
-      } else {
-        this.isLogged = true;
-      }
+    this.commentService.getPosts(this.carId).subscribe({
+      next: (data) => (this.posts = data),
+      error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
+    });
+    this.userService.user$.subscribe({
+      next: (data) => {
+        if (data === undefined) {
+          this.isLogged = false;
+        } else {
+          this.isLogged = true;
+        }
+      },
+      error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
     });
   }
   onCommentHandler(form: NgForm) {
     const { postText } = form.value;
 
     this.commentService.createPost(this.carId, postText).subscribe((data) => {
-      this.commentService
-        .getPosts(this.carId)
-        .subscribe((data) => (this.posts = data));
+      this.commentService.getPosts(this.carId).subscribe({
+        next: (data) => (this.posts = data),
+        error: (error) => this.router.navigate([`/error/:${error.statusText}`]),
+      });
     });
     form.reset();
   }

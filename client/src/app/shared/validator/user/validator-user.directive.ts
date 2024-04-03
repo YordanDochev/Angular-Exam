@@ -2,7 +2,6 @@ import {
   Directive,
   Input,
   OnChanges,
-  OnInit,
   SimpleChanges,
 } from '@angular/core';
 import {
@@ -26,7 +25,7 @@ import { phoneNumberValidator } from '../../utils/phoneNumber-validator';
     },
   ],
 })
-export class ValidatorDirective implements Validator, OnChanges, OnInit {
+export class ValidatorDirective implements Validator, OnChanges {
   @Input('appEmail') appEmail: string[] = [];
   constructor() {}
 
@@ -36,7 +35,6 @@ export class ValidatorDirective implements Validator, OnChanges, OnInit {
     return this.validator(control);
   }
 
-  ngOnInit(): void {}
   ngOnChanges(changes: SimpleChanges): void {
     const { currentValue } = changes['appEmail'];
 
